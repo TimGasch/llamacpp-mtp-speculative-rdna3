@@ -1,0 +1,9 @@
+{
+  "description": "iteration 4 build, no speculation (qdump target-path checks)",
+  "server": "build/it04/bin/llama-server.exe",
+  "qdump": "build/it04/bin/qdump.exe",
+  "bench": "build/it04/bin/llama-bench.exe",
+  "buildinfo": "build/it04/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {}
+}

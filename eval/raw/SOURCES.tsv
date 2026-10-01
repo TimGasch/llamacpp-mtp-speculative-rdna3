@@ -1,0 +1,11 @@
+file	url	license	bytes	sha256	fetched
+wikitext-2-raw-v1.zip	https://huggingface.co/datasets/ggml-org/ci/resolve/main/wikitext-2-raw-v1.zip	CC BY-SA 3.0	4721645	ef7edb566e3e2b2d31b29c1fdb0c89a4cc683597484c3dc2517919c615435a11	2026-09-30T18:13:00+02:00
+databricks-dolly-15k.jsonl	https://huggingface.co/datasets/databricks/databricks-dolly-15k/resolve/main/databricks-dolly-15k.jsonl	CC BY-SA 3.0	13085339	2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec	2026-09-30T18:13:04+02:00
+gsm8k-test.jsonl	https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/test.jsonl	MIT	749738	3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14	2026-09-30T18:13:05+02:00
+HumanEval.jsonl.gz	https://github.com/openai/human-eval/raw/master/data/HumanEval.jsonl.gz	MIT	44877	b796127e635a67f93fb35c04f4cb03cf06f38c8072ee7cee8833d7bee06979ef	2026-09-30T18:13:06+02:00
+pg1342.txt	https://www.gutenberg.org/cache/epub/1342/pg1342.txt	Public domain (Project Gutenberg)	772386	3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75	2026-09-30T18:13:08+02:00
+pg2701.txt	https://www.gutenberg.org/cache/epub/2701/pg2701.txt	Public domain (Project Gutenberg)	1276267	907420db6c4b68c70e2988cd2ad9c8cf79138667a01b63376d18dd17fef1a18b	2026-09-30T18:13:12+02:00
+pg1661.txt	https://www.gutenberg.org/cache/epub/1661/pg1661.txt	Public domain (Project Gutenberg)	607606	922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0	2026-09-30T18:13:15+02:00
+pg98.txt	https://www.gutenberg.org/cache/epub/98/pg98.txt	Public domain (Project Gutenberg)	807197	d54c2b80d40a40b982cd88852c6180bb944d95acdb028af3d0e01a1750681784	2026-09-30T18:13:18+02:00
+pg84.txt	https://www.gutenberg.org/cache/epub/84/pg84.txt	Public domain (Project Gutenberg)	448885	7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3	2026-09-30T18:13:22+02:00
+pg1400.txt	https://www.gutenberg.org/cache/epub/1400/pg1400.txt	Public domain (Project Gutenberg)	1058204	9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8	2026-09-30T18:13:26+02:00

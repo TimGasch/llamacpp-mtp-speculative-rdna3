@@ -1,0 +1,71 @@
+{
+ "label": "envelope-check_qwen35-9b_dev",
+ "date": "2026-09-30T20:02:22.060707",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "noisefloor_qwen35-9b_ub512_frozen_vs_ub1",
+  "noisefloor_qwen35-9b_ub4_frozen_vs_ub1",
+  "noisefloor_qwen35-9b_ub1_fa-off_vs_ub1"
+ ],
+ "envelope": {
+  "mean_kld": 0.0022400295886832377,
+  "p99_kld": 0.04140749984230864,
+  "top1_agree": 0.984375,
+  "abs_ln_ppl_ratio": 0.0008860513224807862
+ },
+ "candidates": [
+  {
+   "cand": "calib_qwen35-9b_calib-kvq8_vs_ub1",
+   "summary": {
+    "mean_kld": 0.0019265015729050014,
+    "p99_kld": 0.03539486765116952,
+    "top1_agree": 0.987109375,
+    "abs_ln_ppl_ratio": 0.0006858258947426614
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "calib_qwen35-9b_calib-kvq4_vs_ub1",
+   "summary": {
+    "mean_kld": 0.009872412086876293,
+    "p99_kld": 0.1814791361333,
+    "top1_agree": 0.9666015625,
+    "abs_ln_ppl_ratio": 0.006567275663096314
+   },
+   "verdict": {
+    "mean_kld": false,
+    "p99_kld": false,
+    "top1_agree": false,
+    "abs_ln_ppl_ratio": false
+   },
+   "pass": false
+  },
+  {
+   "cand": "calib_qwen35-9b_altquant_vs_ub1",
+   "summary": {
+    "mean_kld": 0.017486316399417588,
+    "p99_kld": 0.3162877138073578,
+    "top1_agree": 0.95859375,
+    "abs_ln_ppl_ratio": 0.003202287922566564
+   },
+   "verdict": {
+    "mean_kld": false,
+    "p99_kld": false,
+    "top1_agree": false,
+    "abs_ln_ppl_ratio": false
+   },
+   "pass": false
+  }
+ ],
+ "pass": false
+}

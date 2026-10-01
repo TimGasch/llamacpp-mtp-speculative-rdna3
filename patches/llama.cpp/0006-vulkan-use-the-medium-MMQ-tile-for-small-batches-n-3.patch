@@ -1,0 +1,35 @@
+From de5896404a89d735199d0f1d5d4f5105859f0289 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Thu, 1 Oct 2026 17:52:28 +0200
+Subject: [PATCH 6/7] vulkan: use the medium MMQ tile for small batches (n <=
+ 32) without coopmat2 (bit-identical)
+
+On the RX 7800 XT the small MMQ tile (32x32, one 32-wide subgroup) made 9..32-token
+batches slower than 64-token batches (Qwen3.5-9B pp16 89 ms vs pp64 66 ms). Selecting the
+medium tile for n <= 32 (when m > 32) cuts pp9..pp32 to 57 ms (Qwen) / 32 ms (Gemma 4 E4B)
+and is bit-identical (qdump ub=16 hashes equal). Speeds up short prompts and the small
+prompt chunks that llama-server creates for context checkpoints.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ ggml/src/ggml-vulkan/ggml-vulkan.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/ggml/src/ggml-vulkan/ggml-vulkan.cpp b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+index 11d734f..89cb426 100644
+--- a/ggml/src/ggml-vulkan/ggml-vulkan.cpp
++++ b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+@@ -2854,7 +2854,9 @@ void ggml_vk_load_shaders(vk_device& device, vk_pipeline requested) {
+         device->matmul_tile_selector = [](uint32_t m, uint32_t n, uint32_t /*k*/, uint32_t /*shader_core_count*/,
+                                           const std::vector<vk_matmul_pipeline_pair>& configs) -> uint32_t {
+             if (configs.size() <= 1) return 0;
+-            if (m <= 32 || n <= 32) return 0;
++            // small-n batches (e.g. short prompts / checkpoint-split prompt chunks) use the medium tile:
++            // on RDNA3 (no coopmat2) the small MMQ tile is several times slower (fastllama iteration 7)
++            if (m <= 32) return 0;
+             if (configs.size() == 2) return 1;
+             if (m <= 64 || n <= 64) return 1;
+             return (uint32_t)configs.size() - 1;
+-- 
+2.55.0.windows.2
+

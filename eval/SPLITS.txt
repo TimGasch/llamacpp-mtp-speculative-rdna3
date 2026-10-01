@@ -1,0 +1,6 @@
+dev      prompts  n= 15 sha256=9f821ac886479398f4ccc5d5156e5d2f7120590ad13e2e0e47c8f8d99310269f {'chat': 3, 'creative': 3, 'summarization': 3, 'math': 3, 'code': 3}
+dev      corpus   n=  8 sha256=16f5fb2fa3d688b44bb1eaf3850d68be61c3203e4a4c707c6334316e08984e88 {'prose': 3, 'code': 2, 'chat': 3}
+dev      long     n=  4 sha256=ff4cd16f4572102e7b702ed08678176ef9960457c84b844cfae7ab19a65263e6 {'L-4096': 1, 'L-16384': 1, 'L-32768': 1, 'Q1-long-16384': 1}
+holdout  prompts  n= 15 sha256=d87dad864b96b925507f4f9034541426a56a6f7ce8c98250d482fe0e3605d9b6 {'chat': 3, 'creative': 3, 'summarization': 3, 'math': 3, 'code': 3}
+holdout  corpus   n=  8 sha256=7f75debff108863a281dbdeb170075e849da57a6e62dcc54a5a08801f7e09729 {'prose': 3, 'code': 2, 'chat': 3}
+holdout  long     n=  4 sha256=d3b5e23ccc7ce0feb5619a8aea3797becb123137ceea4bd584778aefdd43e0c3 {'L-4096': 1, 'L-16384': 1, 'L-32768': 1, 'Q1-long-16384': 1}

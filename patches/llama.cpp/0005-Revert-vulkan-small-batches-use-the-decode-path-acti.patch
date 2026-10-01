@@ -1,0 +1,40 @@
+From fcaa25135534a627eaab8db857996a9b67109d76 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Wed, 30 Sep 2026 22:10:42 +0200
+Subject: [PATCH] Revert "vulkan: small batches use the decode-path activation
+ precision rule"
+
+Iteration 4 made Gemma's batched verification numerically near-identical to single-token
+decode (mean KLD vs ub=1: 2.1e-3 -> 2.6e-5 at ub=5) but the float Q8_0 multi-column mat-vec
+path is 14-25% slower end-to-end for MTP speculation (sessions it04-explore, it05-explore),
+and an iteration-5 decode-once rewrite of that path did not recover the speed. Under the
+Amendment 1 envelope, Gemma n=3 with stock numerics is admissible, so revert for speed.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ ggml/src/ggml-vulkan/ggml-vulkan.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/ggml/src/ggml-vulkan/ggml-vulkan.cpp b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+index 56a87a8..11d734f 100644
+--- a/ggml/src/ggml-vulkan/ggml-vulkan.cpp
++++ b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+@@ -6556,11 +6556,10 @@ static bool ggml_vk_should_use_mmvq(const vk_device& device, uint32_t m, uint32_
+         return false;
+     }
+ 
+-    // Small batches (n = 2..mul_mat_vec_max_cols, e.g. speculative verification) use the same
+-    // activation-precision choice as single-token decode, so that verifying drafted tokens
+-    // reproduces the numerics of generating them one by one (fastllama iteration 4). The previous
+-    // "always MMVQ for n > 1" rule quantized activations to q8_1 only in the batched path.
+-    GGML_UNUSED(n);
++    // MMVQ is generally good for batches
++    if (n > 1) {
++        return true;
++    }
+ 
+     // Quantization overhead is not worth it for small k
+     switch (device->vendor_id) {
+-- 
+2.55.0.windows.2
+

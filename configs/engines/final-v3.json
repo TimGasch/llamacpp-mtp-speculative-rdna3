@@ -1,0 +1,26 @@
+{
+  "description": "FINAL v3 (Phase 2c, dev-only decisions): b11284 + patches 0001-0003, 0006, 0007 (fresh clone src/llama.cpp-final3, tree 8da52347), clean build; Qwen rv32k-Q4_K draft sidecar n=3; Gemma official drafter n=3; MTP prompt window 2048 (default)",
+  "server": "build/final3-vulkan/bin/llama-server.exe",
+  "qdump": "build/final3-vulkan/bin/qdump.exe",
+  "bench": "build/final3-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/final3-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ]
+  }
+}

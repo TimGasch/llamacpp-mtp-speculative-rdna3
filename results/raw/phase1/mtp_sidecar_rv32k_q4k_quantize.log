@@ -1,0 +1,85 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon RX 7800 XT (AMD proprietary driver) | uma: 0 | fp16: 1 | bf16: 1 | fp4: 0 | warp size: 64 | shared memory: 32768 | int dot: 1 | matrix cores: KHR_coopmat
+version: 0.5.0-dev (build 4, commit 865c8bf)
+built with Clang 23.1.2 for Windows AMD64
+llama_quantize: quantizing 'models/Qwen3.5-9B-MTP-sidecar-rv32k.gguf' to 'models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf' as Q4_K
+llama_model_loader: loaded meta data with 49 key-value pairs and 19 tensors from models/Qwen3.5-9B-MTP-sidecar-rv32k.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = qwen35
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Qwen3.5-9B
+llama_model_loader: - kv   3:                           general.basename str              = Qwen3.5-9B
+llama_model_loader: - kv   4:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   5:                         general.size_label str              = 9B
+llama_model_loader: - kv   6:                            general.license str              = apache-2.0
+llama_model_loader: - kv   7:                       general.license.link str              = https://huggingface.co/Qwen/Qwen3.5-9...
+llama_model_loader: - kv   8:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   9:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  10:                  general.base_model.0.name str              = Qwen3.5 9B
+llama_model_loader: - kv  11:          general.base_model.0.organization str              = Qwen
+llama_model_loader: - kv  12:              general.base_model.0.repo_url str              = https://huggingface.co/Qwen/Qwen3.5-9B
+llama_model_loader: - kv  13:                               general.tags arr[str,2]       = ["unsloth", "image-text-to-text"]
+llama_model_loader: - kv  14:                         qwen35.block_count u32              = 33
+llama_model_loader: - kv  15:                      qwen35.context_length u32              = 262144
+llama_model_loader: - kv  16:                    qwen35.embedding_length u32              = 4096
+llama_model_loader: - kv  17:                 qwen35.feed_forward_length u32              = 12288
+llama_model_loader: - kv  18:                qwen35.attention.head_count u32              = 16
+llama_model_loader: - kv  19:             qwen35.attention.head_count_kv u32              = 4
+llama_model_loader: - kv  20:             qwen35.rope.dimension_sections arr[i32,4]       = [11, 11, 10, 0]
+llama_model_loader: - kv  21:                      qwen35.rope.freq_base f32              = 10000000.000000
+llama_model_loader: - kv  22:    qwen35.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  23:                qwen35.attention.key_length u32              = 256
+llama_model_loader: - kv  24:              qwen35.attention.value_length u32              = 256
+llama_model_loader: - kv  25:                     qwen35.ssm.conv_kernel u32              = 4
+llama_model_loader: - kv  26:                      qwen35.ssm.state_size u32              = 128
+llama_model_loader: - kv  27:                     qwen35.ssm.group_count u32              = 16
+llama_model_loader: - kv  28:                  qwen35.ssm.time_step_rank u32              = 32
+llama_model_loader: - kv  29:                      qwen35.ssm.inner_size u32              = 4096
+llama_model_loader: - kv  30:             qwen35.full_attention_interval u32              = 4
+llama_model_loader: - kv  31:                qwen35.rope.dimension_count u32              = 64
+llama_model_loader: - kv  32:                qwen35.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  33:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  34:                         tokenizer.ggml.pre str              = qwen35
+llama_model_loader: - kv  35:                      tokenizer.ggml.tokens arr[str,248320]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  36:                  tokenizer.ggml.token_type arr[i32,248320]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  37:                      tokenizer.ggml.merges arr[str,247587]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 248046
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 248055
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  41:                    tokenizer.chat_template str              = {%- set image_count = namespace(value...
+llama_model_loader: - kv  42:               general.quantization_version u32              = 2
+llama_model_loader: - kv  43:                          general.file_type u32              = 15
+llama_model_loader: - kv  44:                      quantize.imatrix.file str              = Qwen3.5-9B-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  45:                   quantize.imatrix.dataset str              = unsloth_calibration_Qwen3.5-9B.txt
+llama_model_loader: - kv  46:             quantize.imatrix.entries_count u32              = 248
+llama_model_loader: - kv  47:              quantize.imatrix.chunks_count u32              = 77
+llama_model_loader: - kv  48:                        general.description str              = MTP-only sidecar with reduced draft v...
+llama_model_loader: - type  f32:    8 tensors
+llama_model_loader: - type q8_0:    1 tensors
+llama_model_loader: - type q4_K:    6 tensors
+llama_model_loader: - type q6_K:    3 tensors
+llama_model_loader: - type  i64:    1 tensors
+[   1/  19] d2t                                  - [ 32768,      1,      1,      1], type =    i64, size =    0.250 MiB
+[   2/  19] output.weight                        - [  4096,  32768,      1,      1], type =   q6_K, converting to q4_K .. size =   105.00 MiB ->    72.00 MiB
+[   3/  19] output_norm.weight                   - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+[   4/  19] token_embd.weight                    - [  4096, 248320,      1,      1], type =   q4_K, size =  545.625 MiB
+[   5/  19] blk.32.attn_k.weight                 - [  4096,   1024,      1,      1], type =   q4_K, size =    2.250 MiB
+[   6/  19] blk.32.attn_k_norm.weight            - [   256,      1,      1,      1], type =    f32, size =    0.001 MiB
+[   7/  19] blk.32.attn_norm.weight              - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+[   8/  19] blk.32.attn_output.weight            - [  4096,   4096,      1,      1], type =   q4_K, size =    9.000 MiB
+[   9/  19] blk.32.attn_q.weight                 - [  4096,   8192,      1,      1], type =   q4_K, size =   18.000 MiB
+[  10/  19] blk.32.attn_q_norm.weight            - [   256,      1,      1,      1], type =    f32, size =    0.001 MiB
+[  11/  19] blk.32.attn_v.weight                 - [  4096,   1024,      1,      1], type =   q6_K, converting to q4_K .. size =     3.28 MiB ->     2.25 MiB
+[  12/  19] blk.32.ffn_down.weight               - [ 12288,   4096,      1,      1], type =   q6_K, converting to q4_K .. size =    39.38 MiB ->    27.00 MiB
+[  13/  19] blk.32.ffn_gate.weight               - [  4096,  12288,      1,      1], type =   q4_K, size =   27.000 MiB
+[  14/  19] blk.32.ffn_up.weight                 - [  4096,  12288,      1,      1], type =   q4_K, size =   27.000 MiB
+[  15/  19] blk.32.nextn.eh_proj.weight          - [  8192,   4096,      1,      1], type =   q8_0, converting to q4_K .. size =    34.00 MiB ->    18.00 MiB
+[  16/  19] blk.32.nextn.enorm.weight            - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+[  17/  19] blk.32.nextn.hnorm.weight            - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+[  18/  19] blk.32.nextn.shared_head_norm.weight - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+[  19/  19] blk.32.post_attention_norm.weight    - [  4096,      1,      1,      1], type =    f32, size =    0.016 MiB
+llama_model_quantize_impl: model size  =   810.88 MiB (4.88 BPW)
+llama_model_quantize_impl: quant size  =   748.47 MiB (4.50 BPW)
+
+llama_quantize: quantize time = 19218.10 ms
+llama_quantize:    total time = 19218.10 ms

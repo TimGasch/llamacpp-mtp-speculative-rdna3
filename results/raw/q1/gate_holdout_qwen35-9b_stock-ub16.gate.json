@@ -1,0 +1,39 @@
+{
+ "label": "gate_holdout_qwen35-9b_stock-ub16",
+ "date": "2026-10-01T19:58:47.129127",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "holdout_envelope_qwen35-9b_ub512_holdout",
+  "holdout_envelope_qwen35-9b_ub4_holdout",
+  "holdout_envelope_qwen35-9b_ub1_holdout-fa-off"
+ ],
+ "envelope": {
+  "mean_kld": 0.0005136588469833666,
+  "p99_kld": 0.004044716006231212,
+  "top1_agree": 0.9892578125,
+  "abs_ln_ppl_ratio": 0.0008448549277188036
+ },
+ "candidates": [
+  {
+   "cand": "holdout_stock-ub16_qwen35-9b",
+   "summary": {
+    "mean_kld": 0.0005205976645327778,
+    "p99_kld": 0.004268604631144126,
+    "top1_agree": 0.9892578125,
+    "abs_ln_ppl_ratio": 0.00017918324406787596
+   },
+   "verdict": {
+    "mean_kld": false,
+    "p99_kld": false,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": false
+  }
+ ],
+ "pass": false
+}

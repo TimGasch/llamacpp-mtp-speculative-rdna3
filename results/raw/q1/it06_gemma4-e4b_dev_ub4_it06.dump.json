@@ -1,0 +1,123 @@
+{
+ "name": "it06_gemma4-e4b_dev_ub4_it06",
+ "date": "2026-09-30T22:13:38.100527",
+ "cmd": [
+  "H:\\python-projects\\Fast llama\\build\\it06\\bin\\qdump.exe",
+  "--segs",
+  "H:\\python-projects\\Fast llama\\eval\\dev\\q1_segments_gemma4-e4b.txt",
+  "--ub",
+  "4",
+  "--out",
+  "H:\\python-projects\\Fast llama\\results\\q1dumps\\it06_gemma4-e4b_dev_ub4_it06",
+  "--",
+  "-m",
+  "H:\\python-projects\\Fast llama\\models\\gemma-4-E4B-it-Q8_0.gguf",
+  "-ngl",
+  "99",
+  "-c",
+  "40960",
+  "-np",
+  "1"
+ ],
+ "wall_s": 58.77219605445862,
+ "engine": {
+  "description": "iteration 6 build, no speculation (qdump target-path checks)",
+  "server": "build/it06/bin/llama-server.exe",
+  "qdump": "build/it06/bin/qdump.exe",
+  "bench": "build/it06/bin/llama-bench.exe",
+  "buildinfo": "date: 2026-09-30T22:11:15+02:00\nsrc: /h/python-projects/Fast llama/src/llama.cpp-dev\ncommit: fcaa25135534a627eaab8db857996a9b67109d76\ndescribe: b11284-5-gfcaa251-dirty\ndirty-diff-sha256: f4e8e66950b1369aade563cb37b7b5ac88a6d0c7fbb2649f86aece1f2d406021\ncompiler: clang version 23.1.2 (https://github.com/llvm/llvm-project.git 85ac560262434c9ccfc0c183ec22d4138ed647fb)\ncmake: cmake version 4.4.3\nninja: 1.13.2.git.kitware.jobserver-pipe-1\nglslc: shaderc v2026.2 v2026.2\ncmake-args: -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON -DGGML_NATIVE=ON -DLLAMA_OPENSSL=OFF -DLLAMA_USE_PREBUILT_UI=OFF -DLLAMA_BUILD_TESTS=ON -DCMAKE_C_FLAGS=-D_WIN32_WINNT=0x0A00 -DCMAKE_CXX_FLAGS=-D_WIN32_WINNT=0x0A00\nruntime-dlls: copied from /h/python-projects/Fast llama/toolchain/llvm-mingw-20260922-ucrt-x86_64/x86_64-w64-mingw32/bin\n",
+  "extra_args": [],
+  "model_extra_args": {},
+  "name": "it06",
+  "config_sha256": "cb40229b0fdf518bbf3f403bbc5d174668eb124c2e81f17f08f7831bf90e435a",
+  "server_sha256": "0f464c866c8a0d4fbd87e3e3c48a65101941755ff26a7a22e609138eb6409597",
+  "qdump_sha256": "7a0108645518518caf0a5e3ebaf7066199c3ffd6ea2d9f7b932696c2fc83c7a0",
+  "bench_sha256": "c73574d61a5578d663a2f62d58887343d89efeb33df916cd03c9af903c3f27fc"
+ },
+ "model": "gemma4-e4b",
+ "split": "dev",
+ "ub": 4,
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "segments_file_sha256": "6e0d0cbcf3eea28c105ebe04aeb246cc000de337b79e3b5eace3f1001ca12245",
+ "logits_sha256": "335b860101bba338d1c3020ac8c520a1b7ccfe80ebad55d58639474b6d2d0dc4",
+ "qdump_meta": {
+  "tool": "qdump",
+  "ub": 4,
+  "n_vocab": 262144,
+  "n_ctx": 40960,
+  "n_batch": 2048,
+  "n_ubatch": 512,
+  "n_scored_total": 5120,
+  "t_scored_ms": 30327.7,
+  "llama_args": [
+   "-m",
+   "H:\\python-projects\\Fast llama\\models\\gemma-4-E4B-it-Q8_0.gguf",
+   "-ngl",
+   "99",
+   "-c",
+   "40960",
+   "-np",
+   "1"
+  ],
+  "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+  "segments": [
+   {
+    "id": "dev-long-03",
+    "n_tokens": 16385,
+    "n_prefix": 15360,
+    "n_scored": 1024
+   },
+   {
+    "id": "dev-corpus-00",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-01",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-02",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-03",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-04",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-05",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-06",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-07",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   }
+  ]
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "label": "gate_dev_gemma4-e4b_it04-verify",
+ "date": "2026-09-30T21:52:27.312700",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "noisefloor_gemma4-e4b_ub512_frozen_vs_ub1",
+  "noisefloor_gemma4-e4b_ub4_frozen_vs_ub1",
+  "noisefloor_gemma4-e4b_ub1_fa-off_vs_ub1"
+ ],
+ "envelope": {
+  "mean_kld": 0.001839121041773801,
+  "p99_kld": 0.022835640344764385,
+  "top1_agree": 0.9814453125,
+  "abs_ln_ppl_ratio": 0.004551390458475175
+ },
+ "candidates": [
+  {
+   "cand": "it04_gemma4-e4b_ub4_vs_ub1",
+   "summary": {
+    "mean_kld": 1.7959613468875194e-06,
+    "p99_kld": 2.4676141363926928e-05,
+    "top1_agree": 0.9998046875,
+    "abs_ln_ppl_ratio": 3.882603459146202e-05
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "it04_gemma4-e4b_ub5_vs_ub1",
+   "summary": {
+    "mean_kld": 2.6411457609975326e-05,
+    "p99_kld": 0.0003788873149949857,
+    "top1_agree": 0.9984375,
+    "abs_ln_ppl_ratio": 7.770137434899529e-05
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  }
+ ],
+ "pass": true
+}

@@ -1,0 +1,10 @@
+K=65536 weight=5.0: covers 100.00% of dev-generated tokens, 100.00% of corpus tokens; control tokens kept: 27
+output.weight: Q6_K shape(bytes)=(65536, 3360) nbytes=220200960
+d2t: I64 shape(bytes)=(65536,) nbytes=524288
+K=32768 weight=5.0: covers 99.78% of dev-generated tokens, 98.96% of corpus tokens; control tokens kept: 27
+output.weight: Q6_K shape(bytes)=(32768, 3360) nbytes=110100480
+d2t: I64 shape(bytes)=(32768,) nbytes=262144
+41e9d998247acbe230182046a721360c5b44bee2781499c3ba807e4c9b34d224 *models/Qwen3.5-9B-MTP-sidecar-rv32k.gguf
+4583cf132bae3a535bd79b271920000602daf072ed3698ec5c14ff39b5b9678f *models/Qwen3.5-9B-MTP-sidecar-rv64k.gguf
+178e50184f29236004a13dc47bc0109df35d2ebf04b84f1429b8ecc7a99c2c77 *models/Qwen3.5-9B-MTP-sidecar-rv64k-q4k.gguf
+cd7dc8a912fb3f4fa069edf83ddac5efa5aab40d019fcc7ca7441eae2e07f955 *models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf

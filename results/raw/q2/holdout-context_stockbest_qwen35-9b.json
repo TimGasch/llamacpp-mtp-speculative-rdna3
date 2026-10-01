@@ -1,0 +1,221 @@
+{
+ "label": "holdout-context_stockbest_qwen35-9b",
+ "date": "2026-09-30T23:02:13.621899",
+ "ref": "results/raw/20260930-222320_phase3-holdout-qwen35-9b/b18_ref-vulkan_qwen35-9b_Q2.jsonl",
+ "cand": [
+  "results/raw/20260930-222320_phase3-holdout-qwen35-9b/b02_stock-best_qwen35-9b_S-greedy.jsonl",
+  "results/raw/20260930-222320_phase3-holdout-qwen35-9b/b14_stock-best_qwen35-9b_L.jsonl"
+ ],
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "hard_delta_nats": 0.25,
+ "n_items": 18,
+ "n_exact_match": 10,
+ "n_hard": 0,
+ "n_undetermined": 0,
+ "mean_identical_token_share": 0.7391493055555556,
+ "n_items_cand_nondeterministic": 9,
+ "pass": true,
+ "items": [
+  {
+   "item": "holdout-prompts-00",
+   "diverged": true,
+   "pos": 9,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.09259796142578125,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 15673,
+   "cand_token": 11488,
+   "ref_top1_logprob": -0.9577164649963379,
+   "ref_top2_logprob": -1.0503144264221191
+  },
+  {
+   "item": "holdout-prompts-01",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-02",
+   "diverged": true,
+   "pos": 69,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.08355706930160522,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 1905,
+   "cand_token": 6196,
+   "ref_top1_logprob": -0.657960832118988,
+   "ref_top2_logprob": -0.7415179014205933
+  },
+  {
+   "item": "holdout-prompts-03",
+   "diverged": true,
+   "pos": 121,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true,
+   "delta": 0.0118943452835083,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 10607,
+   "cand_token": 220,
+   "ref_top1_logprob": -1.6441829204559326,
+   "ref_top2_logprob": -1.656077265739441
+  },
+  {
+   "item": "holdout-prompts-04",
+   "diverged": true,
+   "pos": 10,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.09601598978042603,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 13888,
+   "cand_token": 2469,
+   "ref_top1_logprob": -0.6463519930839539,
+   "ref_top2_logprob": -0.7423679828643799
+  },
+  {
+   "item": "holdout-prompts-05",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-06",
+   "diverged": true,
+   "pos": 218,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.058902740478515625,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 2693,
+   "cand_token": 283,
+   "ref_top1_logprob": -1.0045651197433472,
+   "ref_top2_logprob": -1.0634678602218628
+  },
+  {
+   "item": "holdout-prompts-07",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-08",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-09",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-10",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false
+  },
+  {
+   "item": "holdout-prompts-11",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false
+  },
+  {
+   "item": "holdout-prompts-12",
+   "diverged": true,
+   "pos": 135,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.019643783569335938,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 281,
+   "cand_token": 4831,
+   "ref_top1_logprob": -0.7326370477676392,
+   "ref_top2_logprob": -0.7522808313369751
+  },
+  {
+   "item": "holdout-prompts-13",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-prompts-14",
+   "diverged": true,
+   "pos": 103,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true,
+   "delta": 0.008211135864257812,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 1000,
+   "cand_token": 369,
+   "ref_top1_logprob": -0.6957586407661438,
+   "ref_top2_logprob": -0.7039697766304016
+  },
+  {
+   "item": "holdout-long-00",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": true
+  },
+  {
+   "item": "holdout-long-01",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false
+  },
+  {
+   "item": "holdout-long-02",
+   "diverged": true,
+   "pos": 181,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 3,
+   "cand_deterministic": false,
+   "delta": 0.08834850788116455,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 579,
+   "cand_token": 6,
+   "ref_top1_logprob": -0.6530875563621521,
+   "ref_top2_logprob": -0.7414360642433167
+  }
+ ]
+}

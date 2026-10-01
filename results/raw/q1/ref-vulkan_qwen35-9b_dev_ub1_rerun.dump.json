@@ -1,0 +1,123 @@
+{
+ "name": "ref-vulkan_qwen35-9b_dev_ub1_rerun",
+ "date": "2026-09-30T18:28:18.346426",
+ "cmd": [
+  "H:\\python-projects\\Fast llama\\build\\ref-vulkan\\bin\\qdump.exe",
+  "--segs",
+  "H:\\python-projects\\Fast llama\\eval\\dev\\q1_segments_qwen35-9b.txt",
+  "--ub",
+  "1",
+  "--out",
+  "H:\\python-projects\\Fast llama\\results\\q1dumps\\ref-vulkan_qwen35-9b_dev_ub1_rerun",
+  "--",
+  "-m",
+  "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+  "-ngl",
+  "99",
+  "-c",
+  "40960",
+  "-np",
+  "1"
+ ],
+ "wall_s": 75.70073413848877,
+ "engine": {
+  "description": "REFERENCE: unmodified llama.cpp b11284 (25747b08), Vulkan, built with scripts/build_llama.sh (LLVM-MinGW)",
+  "server": "build/ref-vulkan/bin/llama-server.exe",
+  "qdump": "build/ref-vulkan/bin/qdump.exe",
+  "bench": "build/ref-vulkan/bin/llama-bench.exe",
+  "buildinfo": "date: 2026-09-30T18:14:40+02:00\nsrc: /h/python-projects/Fast llama/src/llama.cpp-ref\ncommit: 25747b08e7a0f9a59a2089ce6b98d2229b76042a\ndescribe: b11284\ndirty-diff-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\ncompiler: clang version 23.1.2 (https://github.com/llvm/llvm-project.git 85ac560262434c9ccfc0c183ec22d4138ed647fb)\ncmake: cmake version 4.4.3\nninja: 1.13.2.git.kitware.jobserver-pipe-1\nglslc: shaderc v2026.2 v2026.2\ncmake-args: -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON -DGGML_NATIVE=ON -DLLAMA_OPENSSL=OFF -DLLAMA_USE_PREBUILT_UI=OFF -DLLAMA_BUILD_TESTS=ON -DCMAKE_C_FLAGS=-D_WIN32_WINNT=0x0A00 -DCMAKE_CXX_FLAGS=-D_WIN32_WINNT=0x0A00\nruntime-dlls: copied from toolchain/llvm-mingw-20260922-ucrt-x86_64/x86_64-w64-mingw32/bin\n",
+  "extra_args": [],
+  "name": "ref-vulkan",
+  "config_sha256": "aa7cdf7b1edaa46a9e20ccc0da2e3db5e6d5190b6cde6eb0c9238a05897b7758",
+  "server_sha256": "db077e8d06069ced49e49e15421f19d4b5deba8927831cb5ae12a15efeec214f",
+  "qdump_sha256": "3a72af38f519f4f10f2a02dbce210bf6b59471dbfeedfae09e0d3c70e0c2ef93",
+  "bench_sha256": "7102a1761cf67932c3b7454f1086c546f6b2fd5aa98de67b7026c929f3cecb35"
+ },
+ "model": "qwen35-9b",
+ "split": "dev",
+ "ub": 1,
+ "tooling": {
+  "frozen": false,
+  "manifest_sha256": null,
+  "note": "tooling not yet frozen (Phase 1)"
+ },
+ "segments_file_sha256": "c7cdad9e7d6db96c4bfb04ed0d6e9797d96f9879bcd6fc8e87c6bdc1ca44a21b",
+ "logits_sha256": "55017757ad742e325aec830acc924b9416f24d8cc64f57d40e54c6cf2c1672e5",
+ "qdump_meta": {
+  "tool": "qdump",
+  "ub": 1,
+  "n_vocab": 248320,
+  "n_ctx": 40960,
+  "n_batch": 2048,
+  "n_ubatch": 512,
+  "n_scored_total": 5120,
+  "t_scored_ms": 60584.3,
+  "llama_args": [
+   "-m",
+   "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+   "-ngl",
+   "99",
+   "-c",
+   "40960",
+   "-np",
+   "1"
+  ],
+  "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+  "segments": [
+   {
+    "id": "dev-long-03",
+    "n_tokens": 16385,
+    "n_prefix": 15360,
+    "n_scored": 1024
+   },
+   {
+    "id": "dev-corpus-00",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-01",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-02",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-03",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-04",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-05",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-06",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-07",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   }
+  ]
+ }
+}

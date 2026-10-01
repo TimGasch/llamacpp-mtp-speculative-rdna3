@@ -1,0 +1,26 @@
+{
+  "description": "Phase 2c EXPERIMENT: final-v2 args on build (final tree + medium MMQ tile for n<=32)",
+  "server": "build/dev-vulkan/bin/llama-server.exe",
+  "qdump": "build/dev-vulkan/bin/qdump.exe",
+  "bench": "build/dev-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/dev-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ]
+  }
+}

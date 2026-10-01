@@ -1,0 +1,9 @@
+{
+  "description": "Phase 2c EXPERIMENT build (final tree + medium MMQ tile for n<=32), no speculation",
+  "server": "build/dev-vulkan/bin/llama-server.exe",
+  "qdump": "build/dev-vulkan/bin/qdump.exe",
+  "bench": "build/dev-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/dev-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {}
+}

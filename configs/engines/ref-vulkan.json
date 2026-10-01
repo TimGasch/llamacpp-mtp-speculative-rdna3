@@ -1,0 +1,8 @@
+{
+  "description": "REFERENCE: unmodified llama.cpp b11284 (25747b08), Vulkan, built with scripts/build_llama.sh (LLVM-MinGW)",
+  "server": "build/ref-vulkan/bin/llama-server.exe",
+  "qdump": "build/ref-vulkan/bin/qdump.exe",
+  "bench": "build/ref-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/ref-vulkan/BUILDINFO.txt",
+  "extra_args": []
+}

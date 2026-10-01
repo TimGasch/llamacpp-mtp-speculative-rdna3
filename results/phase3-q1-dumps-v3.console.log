@@ -1,0 +1,10 @@
+dump ref-vulkan_qwen35-9b_holdout_ub16_holdout: 5120 positions, 53.3s, sha=050cfb3b264110e3
+dump final-v3-nospec_qwen35-9b_holdout_ub1_holdout: 5120 positions, 80.6s, sha=d1872e6cb366f06d
+dump final-v3-nospec_qwen35-9b_holdout_ub4_holdout: 5120 positions, 50.9s, sha=e3917e1942990952
+dump final-v3-nospec_qwen35-9b_holdout_ub512_holdout: 5120 positions, 45.6s, sha=87a328b5743a27b6
+dump final-v3-nospec_qwen35-9b_holdout_ub16_holdout: 5120 positions, 45.4s, sha=050cfb3b264110e3
+dump ref-vulkan_gemma4-e4b_holdout_ub16_holdout: 5120 positions, 121.0s, sha=e3f93566cef493d9
+dump final-v3-nospec_gemma4-e4b_holdout_ub1_holdout: 5120 positions, 96.8s, sha=5144bf1f1be9a6d2
+dump final-v3-nospec_gemma4-e4b_holdout_ub4_holdout: 5120 positions, 53.7s, sha=25d9339f97f3e9c9
+dump final-v3-nospec_gemma4-e4b_holdout_ub512_holdout: 5120 positions, 71.8s, sha=0ad7ab7436c8f043
+dump final-v3-nospec_gemma4-e4b_holdout_ub16_holdout: 5120 positions, 53.1s, sha=e3f93566cef493d9

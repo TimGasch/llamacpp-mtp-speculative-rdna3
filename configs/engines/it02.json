@@ -1,0 +1,8 @@
+{
+  "description": "iteration 2 build (commit 48424f6): MMVQ decode-once + no RDNA3 4-row override",
+  "server": "build/it02/bin/llama-server.exe",
+  "qdump": "build/it02/bin/qdump.exe",
+  "bench": "build/it02/bin/llama-bench.exe",
+  "buildinfo": "build/it02/BUILDINFO.txt",
+  "extra_args": []
+}

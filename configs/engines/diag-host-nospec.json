@@ -1,0 +1,9 @@
+{
+  "description": "DIAGNOSTIC ONLY (not a candidate): diag-host build without speculation",
+  "server": "build/diag-host/bin/llama-server.exe",
+  "qdump": "build/diag-host/bin/qdump.exe",
+  "bench": "build/diag-host/bin/llama-bench.exe",
+  "buildinfo": "build/diag-host/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {}
+}

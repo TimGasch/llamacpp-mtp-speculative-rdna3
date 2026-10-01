@@ -1,0 +1,33 @@
+﻿# Captured 2026-09-30T17:47:25.4427667+02:00
+git => C:\Program Files\Git\cmd\git.exe
+cmake => NOT FOUND
+ninja => NOT FOUND
+python => C:\Users\<user>\AppData\Local\Programs\Python\Python313\python.exe
+cl => NOT FOUND
+clang => NOT FOUND
+gcc => NOT FOUND
+hipcc => NOT FOUND
+glslc => C:\VulkanSDK\1.4.350.0\Bin\glslc.exe
+uv => C:\Users\<user>\AppData\Local\Microsoft\WinGet\Packages\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\uv.exe
+ollama => C:\Users\<user>\AppData\Local\Programs\Ollama\ollama.exe
+lms => C:\Users\<user>\.lmstudio\bin\lms.exe
+git: git version 2.55.0.windows.2
+python: Python 3.13.6
+uv: uv 0.11.25 (1fc7de7c4 2026-06-26 x86_64-pc-windows-msvc)
+glslc: shaderc v2026.2 v2026.2
+VULKAN_SDK=C:\VulkanSDK\1.4.350.0
+HIP_PATH=
+LM Studio llama.cpp runtimes:
+llama.cpp-win-x86_64-avx2-1.101.0
+llama.cpp-win-x86_64-nvidia-cuda-avx2-1.101.0
+llama.cpp-win-x86_64-vulkan-avx2-1.101.0
+llama.cpp-win-x86_64-vulkan-avx2-1.104.2
+llama.cpp-win-x86_64-vulkan-avx2-2.28.2
+llama.cpp-win-x86_64-vulkan-avx2-2.42.0
+vendor
+Ollama bundled GPU libs:
+cuda_v12
+cuda_v13
+rocm_v7_1
+vulkan
+ollama: ollama version is 0.31.2

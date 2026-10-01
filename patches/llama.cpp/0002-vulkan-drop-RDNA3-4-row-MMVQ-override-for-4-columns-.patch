@@ -1,0 +1,38 @@
+From 48424f6ee18ca94df7cb8f738f24e84b182d8167 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Wed, 30 Sep 2026 20:59:08 +0200
+Subject: [PATCH] vulkan: drop RDNA3 4-row MMVQ override for >4 columns
+ (bit-identical)
+
+With decode-once MMVQ, the default rows-per-workgroup is faster end-to-end for
+speculative verification batches of 5-8 tokens (Gemma MTP n=4: 2.20x vs 2.03x;
+Qwen MTP n=4: 1.55x vs 1.32x vs no-speculation reference, exploratory session
+20260930-204937_it01-e2e-explore). Row partitioning does not change per-row
+accumulation order.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ ggml/src/ggml-vulkan/ggml-vulkan.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/ggml/src/ggml-vulkan/ggml-vulkan.cpp b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+index e23d5b4..11d734f 100644
+--- a/ggml/src/ggml-vulkan/ggml-vulkan.cpp
++++ b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+@@ -2880,9 +2880,11 @@ void ggml_vk_load_shaders(vk_device& device, vk_pipeline requested) {
+         rm_stdq = 2;
+         rm_stdq_int = 2;
+     }
+-    // RDNA3: above four columns, static 4 rows for all types bench faster than the default
+     const bool is_rdna3 = device->vendor_id == VK_VENDOR_ID_AMD && device->architecture == AMD_RDNA3;
+-    auto const &rm_int_n = [&](uint32_t rows, uint32_t i) { return (is_rdna3 && i >= 4) ? 4u : rows; };
++    // RDNA3: the static 4-rows-per-workgroup override for >4 columns was tuned for the per-column
++    // A-decode MMVQ path; with decode-once (see mul_mat_vecq.comp) the default row counts are faster
++    // end-to-end for speculative verification (fastllama iteration 2).
++    auto const &rm_int_n = [&](uint32_t rows, uint32_t i) { GGML_UNUSED(i); return rows; };
+     // RDNA3: Static 4 rows for all types bench faster than the default
+     auto const &rm_id = [&](uint32_t rows) { return is_rdna3 ? 4u : rows; };
+     uint32_t rm_iq = 2 * rm_kq;
+-- 
+2.55.0.windows.2
+

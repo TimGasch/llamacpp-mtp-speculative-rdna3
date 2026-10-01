@@ -1,0 +1,28 @@
+{
+  "description": "SECONDARY REFERENCE candidate: unmodified b11284 (ref build) + built-in draft-mtp speculation, --spec-draft-n-max 3, plus -bs (stock experimental backend sampling for the target). Qwen: MTP-only sidecar built locally by scripts/make_mtp_sidecar.py (target tensors byte-identical, MTP block from unsloth Qwen3.5-9B-MTP). Gemma: official gemma4-assistant drafter mtp-gemma-4-E4B-it.gguf.",
+  "server": "build/ref-vulkan/bin/llama-server.exe",
+  "qdump": "build/ref-vulkan/bin/qdump.exe",
+  "bench": "build/ref-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/ref-vulkan/BUILDINFO.txt",
+  "extra_args": [
+    "-bs"
+  ],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ]
+  }
+}

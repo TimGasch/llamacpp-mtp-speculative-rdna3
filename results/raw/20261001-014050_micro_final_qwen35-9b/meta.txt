@@ -1,0 +1,6 @@
+date: 2026-10-01T01:40:50+02:00
+engine: final
+bench: build/final-vulkan/bin/llama-bench.exe
+bench_sha256: cadb9c82048039b8fa54d8283aa815eb5169c581e07f407dfca75b6bd52872f9
+model: qwen35-9b
+args: -m /h/python-projects/Fast llama/models/Qwen3.5-9B-Q4_K_M.gguf -ngl 99 -p 512 -n 128 -d 0,4096,16384 -r 5 -o jsonl -d 0,4096

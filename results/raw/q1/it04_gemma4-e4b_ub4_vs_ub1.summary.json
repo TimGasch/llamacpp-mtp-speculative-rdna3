@@ -1,0 +1,147 @@
+{
+ "label": "it04_gemma4-e4b_ub4_vs_ub1",
+ "date": "2026-09-30T21:44:09.025948",
+ "ref": "ref-vulkan_gemma4-e4b_dev_ub1_frozen",
+ "cand": "it04_gemma4-e4b_dev_ub4_it04",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "ref_logits_sha256": "e92505ec08600209f6b2b9e74c8cc87fa36ba5e551f654d0d24e433a0d78bea4",
+ "cand_logits_sha256": "0b3e846fded12e7b3149e0a7b50b998e134e74c324c15b0da47226b346d92eb0",
+ "gates": {
+  "mean_kld_max": 0.0005,
+  "p99_kld_max": 0.005,
+  "top1_agree_min": 0.995,
+  "abs_ln_ppl_ratio_max": 0.001
+ },
+ "summary": {
+  "n": 5120,
+  "mean_kld": 1.7959613468875194e-06,
+  "p99_kld": 2.4676141363926928e-05,
+  "max_kld": 0.0001862493627814771,
+  "top1_agree": 0.9998046875,
+  "ppl_ref": 38.922215005633106,
+  "ppl_cand": 38.9207038397034,
+  "abs_ln_ppl_ratio": 3.882603459146202e-05,
+  "bit_identical_rows": 8,
+  "max_abs_logit_diff": 1.1167001724243164
+ },
+ "verdict": {
+  "mean_kld": true,
+  "p99_kld": true,
+  "top1_agree": true,
+  "ppl_ratio": true
+ },
+ "pass": true,
+ "per_segment": {
+  "dev-long-03": {
+   "n": 1024,
+   "mean_kld": 2.690625709425603e-06,
+   "p99_kld": 2.6830282456294454e-05,
+   "max_kld": 0.0001862493627814771,
+   "top1_agree": 0.9990234375,
+   "ppl_ref": 68.93302372066204,
+   "ppl_cand": 68.93638802392006,
+   "abs_ln_ppl_ratio": 4.880420125280001e-05,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 0.2117300033569336
+  },
+  "dev-corpus-00": {
+   "n": 512,
+   "mean_kld": 1.0401227150561358e-06,
+   "p99_kld": 1.2961169940465115e-05,
+   "max_kld": 5.1643386462080714e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 58.84433464132055,
+   "ppl_cand": 58.836425737697816,
+   "abs_ln_ppl_ratio": 0.00013441285744869694,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.16191601753234863
+  },
+  "dev-corpus-01": {
+   "n": 512,
+   "mean_kld": 1.0271230116691577e-06,
+   "p99_kld": 1.0289087516178516e-05,
+   "max_kld": 4.170727144572358e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 42.0763871532947,
+   "ppl_cand": 42.066970742936505,
+   "abs_ln_ppl_ratio": 0.0002238182699843233,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.07576656341552734
+  },
+  "dev-corpus-02": {
+   "n": 512,
+   "mean_kld": 3.410788190190468e-06,
+   "p99_kld": 4.432386829423006e-05,
+   "max_kld": 9.654328353751022e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 47.83250835191412,
+   "ppl_cand": 47.83454664335887,
+   "abs_ln_ppl_ratio": 4.2612191734366256e-05,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 1.1167001724243164
+  },
+  "dev-corpus-03": {
+   "n": 512,
+   "mean_kld": 1.6308527547057297e-06,
+   "p99_kld": 3.134886862782014e-05,
+   "max_kld": 5.826728581395359e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 4.643081032596676,
+   "ppl_cand": 4.642485030969417,
+   "abs_ln_ppl_ratio": 0.00012837163054951666,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.5951824188232422
+  },
+  "dev-corpus-04": {
+   "n": 512,
+   "mean_kld": 8.336731932227491e-07,
+   "p99_kld": 1.1562639008199526e-05,
+   "max_kld": 9.710462863695258e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 6.660218352728585,
+   "ppl_cand": 6.661032335666262,
+   "abs_ln_ppl_ratio": 0.00012220818566213517,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.06122255325317383
+  },
+  "dev-corpus-05": {
+   "n": 512,
+   "mean_kld": 1.2779845768928566e-06,
+   "p99_kld": 2.1246817780052453e-05,
+   "max_kld": 6.755135005824216e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 189.62265395194797,
+   "ppl_cand": 189.64050797265128,
+   "abs_ln_ppl_ratio": 9.415109353578517e-05,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.13589859008789062
+  },
+  "dev-corpus-06": {
+   "n": 512,
+   "mean_kld": 1.9163574232984387e-06,
+   "p99_kld": 2.5763101872401252e-05,
+   "max_kld": 0.00012859067737521694,
+   "top1_agree": 1.0,
+   "ppl_ref": 44.69008075839427,
+   "ppl_cand": 44.68145211425007,
+   "abs_ln_ppl_ratio": 0.00019309603167046868,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.13589859008789062
+  },
+  "dev-corpus-07": {
+   "n": 512,
+   "mean_kld": 1.4414601849884558e-06,
+   "p99_kld": 1.681436452301456e-05,
+   "max_kld": 6.755135005824216e-05,
+   "top1_agree": 1.0,
+   "ppl_ref": 54.107624750334814,
+   "ppl_cand": 54.10410021709885,
+   "abs_ln_ppl_ratio": 6.51414296975024e-05,
+   "bit_identical_rows": 1,
+   "max_abs_logit_diff": 0.13589859008789062
+  }
+ }
+}

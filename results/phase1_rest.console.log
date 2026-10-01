@@ -1,0 +1,29 @@
+canary start: 89.71 t/s
+block 0: {'engine': 'ref-vulkan', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 2}
+block 1: {'engine': 'ref-official-vulkan', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 3}
+block 2: {'engine': 'ref-official-vulkan', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 3}
+block 3: {'engine': 'ref-vulkan', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 2}
+canary end: 88.99 t/s  drift=-0.80%  valid=True
+session dir: H:\python-projects\Fast llama\results\raw\20260930-195818_buildval
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;print(json.load(open(r'/h/python-projects/Fast llama/configs/engines/ref-vulkan.json'))['bench'])
+                                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/h/python-projects/Fast llama/configs/engines/ref-vulkan.json'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;print(json.load(open(r'/h/python-projects/Fast llama/configs/engines/ref-vulkan.json'))['bench'])
+                                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/h/python-projects/Fast llama/configs/engines/ref-vulkan.json'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;print(json.load(open(r'/h/python-projects/Fast llama/configs/engines/ref-official-vulkan.json'))['bench'])
+                                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/h/python-projects/Fast llama/configs/engines/ref-official-vulkan.json'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;print(json.load(open(r'/h/python-projects/Fast llama/configs/engines/ref-official-vulkan.json'))['bench'])
+                                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/h/python-projects/Fast llama/configs/engines/ref-official-vulkan.json'
+bandwidth raw: /h/python-projects/Fast llama/results/raw/20260930-200913_bandwidth
+PHASE1_REST_DONE

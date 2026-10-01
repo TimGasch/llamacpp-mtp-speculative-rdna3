@@ -1,0 +1,87 @@
+{
+ "label": "gate_holdout_gemma4-e4b_final-v3",
+ "date": "2026-10-01T19:58:47.355153",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "holdout_envelope_gemma4-e4b_ub512_holdout",
+  "holdout_envelope_gemma4-e4b_ub4_holdout",
+  "holdout_envelope_gemma4-e4b_ub1_holdout-fa-off"
+ ],
+ "envelope": {
+  "mean_kld": 0.0017491412346744765,
+  "p99_kld": 0.02106845720024996,
+  "top1_agree": 0.98359375,
+  "abs_ln_ppl_ratio": 0.0024430257078908533
+ },
+ "candidates": [
+  {
+   "cand": "holdout_final-v3_gemma4-e4b_ub1",
+   "summary": {
+    "mean_kld": 0.0,
+    "p99_kld": 0.0,
+    "top1_agree": 1.0,
+    "abs_ln_ppl_ratio": 0.0
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "holdout_final-v3_gemma4-e4b_ub4",
+   "summary": {
+    "mean_kld": 0.0016645360504332918,
+    "p99_kld": 0.01907442225195365,
+    "top1_agree": 0.984765625,
+    "abs_ln_ppl_ratio": 0.0024430257078908533
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "holdout_final-v3_gemma4-e4b_ub512",
+   "summary": {
+    "mean_kld": 0.0017491412346744765,
+    "p99_kld": 0.02106845720024996,
+    "top1_agree": 0.98359375,
+    "abs_ln_ppl_ratio": 0.0018460575164114938
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "holdout_final-v3_gemma4-e4b_ub16",
+   "summary": {
+    "mean_kld": 0.002325169228361236,
+    "p99_kld": 0.0312916379289406,
+    "top1_agree": 0.985546875,
+    "abs_ln_ppl_ratio": 0.0002022998914988942
+   },
+   "verdict": {
+    "mean_kld": false,
+    "p99_kld": false,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": false
+  }
+ ],
+ "pass": false
+}

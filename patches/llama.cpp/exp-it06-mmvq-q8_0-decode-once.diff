@@ -1,0 +1,57 @@
+diff --git a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq.comp b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq.comp
+index 32a0292..1a6a94a 100644
+--- a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq.comp
++++ b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq.comp
+@@ -29,7 +29,7 @@ vec2 cache_b_ds;
+ 
+ #include "mul_mat_vecq_funcs.glsl"
+ 
+-#if defined(MMVQ_DECODE_ONCE) && K_PER_ITER == 16 && QUANT_R != 2
++#if defined(MMVQ_DECODE_ONCE) && (K_PER_ITER == 16 || K_PER_ITER == 8) && QUANT_R != 2
+ // Decode each A block once per row, then dot it against every B column. Same arithmetic and
+ // accumulation order as the per-column path below (bit-identical results), but the A-side
+ // unpacking no longer scales with NUM_COLS (matters for batched/speculative verification).
+@@ -49,10 +49,15 @@ void iter(inout FLOAT_TYPE temp[NUM_COLS][NUM_ROWS], const uint first_row, const
+         const uint b_block_idx_outer = b_block_idx / 4;
+         const uint b_block_idx_inner = b_block_idx % 4;
+         cache_b_ds = vec2(data_b[b_block_idx_outer].ds[b_block_idx_inner]);
++#if K_PER_ITER == 8
++        cache_b_qs[0] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 2];
++        cache_b_qs[1] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 2 + 1];
++#else
+         cache_b_qs[0] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 4    ];
+         cache_b_qs[1] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 4 + 1];
+         cache_b_qs[2] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 4 + 2];
+         cache_b_qs[3] = data_b[b_block_idx_outer].qs[b_block_idx_inner * 8 + b_qs_idx * 4 + 3];
++#endif
+ 
+         [[unroll]] for (uint n = 0; n < num_rows; ++n) {
+             temp[j][n] += mmvq_dot_decoded(qs_a[n], sc_a[n]);
+diff --git a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq_funcs.glsl b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq_funcs.glsl
+index 2974533..227f7c2 100644
+--- a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq_funcs.glsl
++++ b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vecq_funcs.glsl
+@@ -190,6 +190,23 @@ FLOAT_TYPE mmvq_dot_product(const uint ib_a, const uint iqs) {
+     // 2 quants per call => divide sums by 8/2 = 4
+     return mul_q8_1(q_sum, get_dm(ib_a), cache_b_ds, 4);
+ }
++
++#if defined(DATA_A_Q8_0)
++// Decode-once variant for Q8_0 (see the K-quant blocks below): the A loads/packing are done once
++// per row and reused for every B column. Bit-identical to mmvq_dot_product.
++#define MMVQ_DECODE_ONCE
++void mmvq_decode_a(const uint ib_a, const uint iqs, out i32vec4 qs_a, out vec2 sc_a) {
++    qs_a = i32vec4(repack(ib_a, iqs * 2), repack(ib_a, iqs * 2 + 1), 0, 0);
++    sc_a = vec2(get_dm(ib_a), 0.0f);
++}
++
++FLOAT_TYPE mmvq_dot_decoded(const i32vec4 qs_a, const vec2 sc_a) {
++    int32_t q_sum = 0;
++    q_sum += dotPacked4x8EXT(qs_a.x, cache_b_qs[0]);
++    q_sum += dotPacked4x8EXT(qs_a.y, cache_b_qs[1]);
++    return mul_q8_1(q_sum, sc_a.x, cache_b_ds, 4);
++}
++#endif
+ #endif
+ 
+ #if defined(DATA_A_Q2_K)

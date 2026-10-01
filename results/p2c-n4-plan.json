@@ -1,0 +1,50 @@
+[
+ {
+  "engine": "p2c-tw-v2",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "p2c-tw-v2-n4",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "p2c-tw-v2-n4",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "p2c-tw-v2",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "p2c-tw-v2",
+  "model": "qwen35-9b",
+  "workload": "L",
+  "reps": 1
+ },
+ {
+  "engine": "p2c-tw-v2-n4",
+  "model": "qwen35-9b",
+  "workload": "L",
+  "reps": 1
+ },
+ {
+  "engine": "p2c-tw-v2-n4",
+  "model": "qwen35-9b",
+  "workload": "L",
+  "reps": 1
+ },
+ {
+  "engine": "p2c-tw-v2",
+  "model": "qwen35-9b",
+  "workload": "L",
+  "reps": 1
+ }
+]

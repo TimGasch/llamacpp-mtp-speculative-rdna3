@@ -1,0 +1,195 @@
+{
+ "label": "validate_ngram_vs_ref",
+ "date": "2026-09-30T18:36:49.892687",
+ "ref": "../results/raw/20260930-183227_validate-q2/b00_ref-vulkan_qwen35-9b_Q2.jsonl",
+ "cand": [
+  "../results/raw/20260930-183227_validate-q2/b01_val-ngram_qwen35-9b_S-greedy.jsonl",
+  "../results/raw/20260930-183227_validate-q2/b02_val-ngram_qwen35-9b_L.jsonl"
+ ],
+ "tooling": {
+  "frozen": false,
+  "manifest_sha256": null,
+  "note": "tooling not yet frozen (Phase 1)"
+ },
+ "hard_delta_nats": 0.25,
+ "n_items": 18,
+ "n_exact_match": 13,
+ "n_hard": 0,
+ "n_undetermined": 0,
+ "mean_identical_token_share": 0.8619791666666666,
+ "n_items_cand_nondeterministic": 0,
+ "pass": true,
+ "items": [
+  {
+   "item": "dev-prompts-00",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-01",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-02",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-03",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-04",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-05",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-06",
+   "diverged": true,
+   "pos": 238,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true,
+   "delta": 0.17615890502929688,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 3158,
+   "cand_token": 1,
+   "ref_top1_logprob": -0.9340873956680298,
+   "ref_top2_logprob": -1.1102463006973267
+  },
+  {
+   "item": "dev-prompts-07",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-08",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-09",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-10",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-11",
+   "diverged": true,
+   "pos": 102,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true,
+   "delta": 0.04731941223144531,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 279,
+   "cand_token": 1024,
+   "ref_top1_logprob": -0.6704010367393494,
+   "ref_top2_logprob": -0.7177204489707947
+  },
+  {
+   "item": "dev-prompts-12",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-13",
+   "diverged": true,
+   "pos": 213,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true,
+   "delta": 0.0023975372314453125,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 71093,
+   "cand_token": 16,
+   "ref_top1_logprob": -0.8391461372375488,
+   "ref_top2_logprob": -0.8415436744689941
+  },
+  {
+   "item": "dev-prompts-14",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-long-00",
+   "diverged": true,
+   "pos": 65,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true,
+   "delta": 0.05871957540512085,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 9926,
+   "cand_token": 2824,
+   "ref_top1_logprob": -0.6890943050384521,
+   "ref_top2_logprob": -0.747813880443573
+  },
+  {
+   "item": "dev-long-01",
+   "diverged": true,
+   "pos": 26,
+   "len_ref": 256,
+   "len_cand": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true,
+   "delta": 0.0352325439453125,
+   "delta_exact": true,
+   "cls": "soft",
+   "ref_token": 6065,
+   "cand_token": 3488,
+   "ref_top1_logprob": -0.6765933632850647,
+   "ref_top2_logprob": -0.7118259072303772
+  },
+  {
+   "item": "dev-long-02",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 1,
+   "cand_deterministic": true
+  }
+ ]
+}

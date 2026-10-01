@@ -1,0 +1,59 @@
+﻿# Captured 2026-09-30T17:47:25.4427667+02:00 (Phase 0, read-only survey)
+## OS
+
+
+Caption        : Microsoft Windows 11 Pro
+Version        : 10.0.26200
+BuildNumber    : 26200
+OSArchitecture : 64-Bit
+
+
+
+
+## CPU
+
+
+Name                      : AMD Ryzen 5 7500F 6-Core Processor             
+NumberOfCores             : 6
+NumberOfLogicalProcessors : 12
+MaxClockSpeed             : 3701
+L2CacheSize               : 6144
+L3CacheSize               : 32768
+
+
+
+
+## RAM
+
+   Capacity Speed ConfiguredClockSpeed PartNumber                     Manufacturer
+   -------- ----- -------------------- ----------                     ------------
+17179869184  4800                 6000 KF560C30-16                    Kingston    
+17179869184  4800                 6000 KF560C30-16                    Kingston    
+
+
+
+## GPU (WMI)
+
+
+Name           : AMD Radeon RX 7800 XT
+DriverVersion  : 32.0.31041.1004
+DriverDate     : 17.08.2026 02:00:00
+VideoProcessor : AMD Radeon Graphics Processor (0x747E)
+PNPDeviceID    : PCI\VEN_1002&DEV_747E&SUBSYS_94781025&REV_C8\6&2663008D&0&00000009
+
+
+
+
+## Power plan
+GUID des Energieschemas: 381b4222-f694-41f0-9685-ff5bb260df2e  (Ausbalanciert)
+## Disks
+
+Name         Used          Free
+----         ----          ----
+C    924581761024   98555781120
+D       167677952  533537579008
+E     10193330176  456303448064
+H    726151053312 3274003853312
+
+
+

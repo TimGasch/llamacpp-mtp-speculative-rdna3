@@ -1,0 +1,74 @@
+[
+ {
+  "engine": "final",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2a",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2b",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2b",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2a",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "final",
+  "model": "qwen35-9b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "final",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2a",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2b",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2b",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "v2a",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ },
+ {
+  "engine": "final",
+  "model": "gemma4-e4b",
+  "workload": "S-greedy",
+  "reps": 2
+ }
+]

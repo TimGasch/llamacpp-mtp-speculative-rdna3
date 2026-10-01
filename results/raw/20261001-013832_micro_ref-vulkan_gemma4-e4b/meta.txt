@@ -1,0 +1,6 @@
+date: 2026-10-01T01:38:32+02:00
+engine: ref-vulkan
+bench: build/ref-vulkan/bin/llama-bench.exe
+bench_sha256: 7102a1761cf67932c3b7454f1086c546f6b2fd5aa98de67b7026c929f3cecb35
+model: gemma4-e4b
+args: -m /h/python-projects/Fast llama/models/gemma-4-E4B-it-Q8_0.gguf -ngl 99 -p 512 -n 128 -d 0,4096,16384 -r 5 -o jsonl -d 0,4096

@@ -1,0 +1,8 @@
+0.00.060.023 I srv  llama_server: initializing ...
+0.00.060.030 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.060.131 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.076.833 I srv    load_model: loading model 'H:\python-projects\Fast llama\models\Qwen3.5-9B-Q4_K_M.gguf'
+0.02.907.173 I cmn          init: llama threadpool init, n_threads = 6
+0.02.975.343 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 40960, kv_unified = 'false'
+0.02.979.177 I srv  llama_server: model loaded
+0.02.979.181 I srv  llama_server: listening on http://127.0.0.1:8093

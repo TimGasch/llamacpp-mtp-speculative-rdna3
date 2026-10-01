@@ -1,0 +1,26 @@
+{
+  "description": "FINAL v2 (Phase 2b, decided on dev only): same final build (patches 0001-0003); Qwen draft sidecar rv32k requantized to Q4_K (Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf, sha cd7dc8a9...), draft-mtp n=3; Gemma unchanged",
+  "server": "build/final-vulkan/bin/llama-server.exe",
+  "qdump": "build/final-vulkan/bin/qdump.exe",
+  "bench": "build/final-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/final-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+diff --git a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vec.comp b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vec.comp
+index 34be1f7..f5fa9ee 100644
+--- a/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vec.comp
++++ b/ggml/src/ggml-vulkan/vulkan-shaders/mul_mat_vec.comp
+@@ -42,6 +42,64 @@ vec4 load_b(const uint j, const uint iybs, const uint iqs, const bool lastiter,
+     }
+ }
+ 
++#if K_PER_ITER == 8
++// Decode-once variant for quantized A: dequantize each A block once per row, then dot it against
++// every B column. Same per-(column,row) arithmetic in the same order as the per-column loop below
++// (bit-identical results); avoids repeating the dequantization NUM_COLS times, which made
++// batched mat-vec (e.g. speculative verification, n = 2..8) ALU-bound.
++void iter(inout FLOAT_TYPE temp[NUM_COLS][NUM_ROWS], const uint first_row, const uint num_rows, const uint tid, const uint i, bool lastiter)
++{
++    const uint col = i*BLOCK_SIZE + K_PER_ITER*tid;
++    const uint iqs = (col%QUANT_K)/QUANT_R; // quant index
++    const uint iybs = col - col%QUANT_K; // y block start index
++
++    vec4 va[NUM_ROWS];
++    vec4 va2[NUM_ROWS];
++    vec2 dma[NUM_ROWS];
++
++    uint ibi = first_row*p.ncols;
++    [[unroll]] for (uint n = 0; n < num_rows; ++n) {
++        const uint ib = (ibi + col)/QUANT_K; // block index
++        ibi += p.ncols;
++
++        vec4 v = dequantize4(ib, iqs, a_offset);
++        vec4 v2 = dequantize4(ib, iqs+(4/QUANT_R), a_offset);
++
++        const vec2 dm = get_dm(ib, a_offset);
++        if (dm.y != 0) { // quant has min component
++            v = v * dm.x + dm.y;
++            v2 = v2 * dm.x + dm.y;
++        }
++        va[n] = v;
++        va2[n] = v2;
++        dma[n] = dm;
++    }
++
++    [[unroll]] for (uint j = 0; j < NUM_COLS; ++j) {
++#if QUANT_R == 2
++        // Note that we end up fetching bogus elements here, but its fine as they'll be
++        // within an accessible block.
++        const vec4 bv02 = vec4(data_b_v4[(j*p.batch_stride_b + b_offset + iybs + iqs) / 4]);
++        const vec4 bv13 = vec4(data_b_v4[(j*p.batch_stride_b + b_offset + iybs + iqs + y_offset) / 4]);
++        const vec4 bv0 = vec4(bv02.x, bv13.x, bv02.y, bv13.y);
++        const vec4 bv1 = vec4(bv02.z, bv13.z, bv02.w, bv13.w);
++#else
++        const vec4 bv0 = vec4(data_b_v4[(j*p.batch_stride_b + b_offset + iybs + iqs) / 4]);
++        const vec4 bv1 = vec4(data_b_v4[(j*p.batch_stride_b + b_offset + iybs + iqs) / 4 + 1]);
++#endif
++        [[unroll]] for (uint n = 0; n < num_rows; ++n) {
++            // matrix multiplication
++            FLOAT_TYPE rowtmp = dot(bv0, va[n]);
++            rowtmp += dot(bv1, va2[n]);
++
++            if (dma[n].y == 0)
++                rowtmp *= dma[n].x;
++
++            temp[j][n] += rowtmp;
++        }
++    }
++}
++#else
+ void iter(inout FLOAT_TYPE temp[NUM_COLS][NUM_ROWS], const uint first_row, const uint num_rows, const uint tid, const uint i, bool lastiter)
+ {
+     [[unroll]] for (uint j = 0; j < NUM_COLS; ++j) {
+@@ -114,6 +172,8 @@ void iter(inout FLOAT_TYPE temp[NUM_COLS][NUM_ROWS], const uint first_row, const
+     }
+ }
+ 
++#endif // K_PER_ITER == 8
++
+ #if defined(DATA_A_F32) || defined(DATA_A_F16) || defined(DATA_A_BF16)
+ void iter_aligned_nonquant(inout FLOAT_TYPE temp[NUM_COLS][NUM_ROWS], const uint first_row, const uint num_rows, const uint tid, const uint i)
+ {

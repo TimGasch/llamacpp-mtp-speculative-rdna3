@@ -1,0 +1,120 @@
+{
+ "source": "results/raw/phase1/explore/perflog_server_v2_qwen.log",
+ "lines": [
+  265,
+  301
+ ],
+ "note": "Effective weight bandwidth of MUL_MAT_VEC ops in a GGML_VK_PERF_LOGGER log (derived numbers).",
+ "rows": [
+  {
+   "type": "q4_K",
+   "m": 1024,
+   "n": 4,
+   "k": 4096,
+   "count": 11,
+   "us_per_call": 6.316,
+   "weight_MB": 2.359296,
+   "GBps": 373.54274857504754
+  },
+  {
+   "type": "q4_K",
+   "m": 12288,
+   "n": 4,
+   "k": 4096,
+   "count": 64,
+   "us_per_call": 61.015,
+   "weight_MB": 28.311552,
+   "GBps": 464.0097025321642
+  },
+  {
+   "type": "q4_K",
+   "m": 4096,
+   "n": 4,
+   "k": 12288,
+   "count": 16,
+   "us_per_call": 57.267,
+   "weight_MB": 28.311552,
+   "GBps": 494.3781235266384
+  },
+  {
+   "type": "q4_K",
+   "m": 4096,
+   "n": 4,
+   "k": 4096,
+   "count": 32,
+   "us_per_call": 22.895,
+   "weight_MB": 9.437184,
+   "GBps": 412.19410351605154
+  },
+  {
+   "type": "q4_K",
+   "m": 8192,
+   "n": 4,
+   "k": 4096,
+   "count": 8,
+   "us_per_call": 40.555,
+   "weight_MB": 18.874368,
+   "GBps": 465.4017507089138
+  },
+  {
+   "type": "q5_K",
+   "m": 4096,
+   "n": 4,
+   "k": 4096,
+   "count": 24,
+   "us_per_call": 26.961,
+   "weight_MB": 11.534336,
+   "GBps": 427.8155854753162
+  },
+  {
+   "type": "q5_K",
+   "m": 8192,
+   "n": 4,
+   "k": 4096,
+   "count": 24,
+   "us_per_call": 45.786,
+   "weight_MB": 23.068672,
+   "GBps": 503.8368060105709
+  },
+  {
+   "type": "q6_K",
+   "m": 1024,
+   "n": 4,
+   "k": 4096,
+   "count": 5,
+   "us_per_call": 13.144,
+   "weight_MB": 3.44064,
+   "GBps": 261.7650639074863
+  },
+  {
+   "type": "q6_K",
+   "m": 248320,
+   "n": 4,
+   "k": 4096,
+   "count": 1,
+   "us_per_call": 1781.24,
+   "weight_MB": 834.3552,
+   "GBps": 468.41256652668926
+  },
+  {
+   "type": "q6_K",
+   "m": 4096,
+   "n": 4,
+   "k": 12288,
+   "count": 16,
+   "us_per_call": 99.167,
+   "weight_MB": 41.28768,
+   "GBps": 416.34495346234127
+  },
+  {
+   "type": "q8_0",
+   "m": 32,
+   "n": 4,
+   "k": 4096,
+   "count": 48,
+   "us_per_call": 4.152,
+   "weight_MB": 0.139264,
+   "GBps": 33.541425818882466
+  }
+ ]
+}

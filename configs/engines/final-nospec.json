@@ -1,0 +1,9 @@
+{
+  "description": "FINAL build without speculation (target-path quality checks via qdump)",
+  "server": "build/final-vulkan/bin/llama-server.exe",
+  "qdump": "build/final-vulkan/bin/qdump.exe",
+  "bench": "build/final-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/final-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {}
+}

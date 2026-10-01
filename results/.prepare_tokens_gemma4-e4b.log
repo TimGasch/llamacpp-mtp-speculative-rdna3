@@ -1,0 +1,12 @@
+0.00.064.309 I srv  llama_server: initializing ...
+0.00.064.316 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.064.429 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.068.559 I srv    load_model: loading model 'H:\python-projects\Fast llama\models\gemma-4-E4B-it-Q8_0.gguf'
+0.01.032.527 W load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.038.002 W load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.044.509 W load: control-looking token:      1 '<eos>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.055.632 W load: '</s>' is a normal token here, removing it from EOG list
+0.03.526.290 I cmn          init: llama threadpool init, n_threads = 6
+0.04.249.912 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 40960, kv_unified = 'false'
+0.04.301.682 I srv  llama_server: model loaded
+0.04.301.687 I srv  llama_server: listening on http://127.0.0.1:8091

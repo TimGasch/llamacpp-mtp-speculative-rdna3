@@ -1,0 +1,30 @@
+{
+  "description": "Phase 2b (dev only): final build + draft-mtp n_max=8 with stock --spec-draft-p-min 0.85",
+  "server": "build/final-vulkan/bin/llama-server.exe",
+  "qdump": "build/final-vulkan/bin/qdump.exe",
+  "bench": "build/final-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/final-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv64k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "8",
+      "--spec-draft-p-min",
+      "0.85"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3",
+      "--spec-draft-p-min",
+      "0.85"
+    ]
+  }
+}

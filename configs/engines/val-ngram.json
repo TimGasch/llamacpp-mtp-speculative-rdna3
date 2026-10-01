@@ -1,0 +1,8 @@
+{
+  "description": "VALIDATION ONLY (harness test before freeze): stock b11284 + built-in ngram-simple speculation",
+  "server": "build/ref-vulkan/bin/llama-server.exe",
+  "qdump": "build/ref-vulkan/bin/qdump.exe",
+  "bench": "build/ref-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/ref-vulkan/BUILDINFO.txt",
+  "extra_args": ["--spec-type", "ngram-simple"]
+}

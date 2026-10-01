@@ -1,0 +1,26 @@
+{
+  "description": "DIAGNOSTIC ONLY (not a candidate): v3 source (dev 277447c) + host-side wall-clock timers (branch diag-host, common/fl_diag.h); v3 args",
+  "server": "build/diag-host/bin/llama-server.exe",
+  "qdump": "build/diag-host/bin/qdump.exe",
+  "bench": "build/diag-host/bin/llama-bench.exe",
+  "buildinfo": "build/diag-host/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv32k-q4k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "3"
+    ]
+  }
+}

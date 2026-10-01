@@ -1,0 +1,2 @@
+dump final-nospec_qwen35-9b_holdout_ub16: 5120 positions, 89.0s, sha=050cfb3b264110e3
+dump final-nospec_gemma4-e4b_holdout_ub16: 5120 positions, 113.5s, sha=e3f93566cef493d9

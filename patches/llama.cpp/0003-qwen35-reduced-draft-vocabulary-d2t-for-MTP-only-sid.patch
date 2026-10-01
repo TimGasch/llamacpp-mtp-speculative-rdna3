@@ -1,0 +1,69 @@
+From 2bdfca476c599125c0ebf7c20f36369ff3192b34 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Wed, 30 Sep 2026 21:23:10 +0200
+Subject: [PATCH] qwen35: reduced draft vocabulary (d2t) for MTP-only sidecars
+
+An MTP-only sidecar may now carry a reduced output head (rows of the draft tokens only) plus
+a d2t mapping (draft row -> target token id), mirroring the existing EAGLE3 convention. The
+MTP draft graph multiplies with the reduced head and scatters the logits back into a full-size
+row filled with -inf. Drafts can only propose tokens from the draft vocabulary; the target
+still verifies every token, so emitted outputs are unaffected. Cuts the per-draft-step head
+read from 834 MB (248k x 4096 Q6_K) to 220 MB (64k rows) or 110 MB (32k rows).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ src/models/qwen35.cpp | 31 ++++++++++++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
+
+diff --git a/src/models/qwen35.cpp b/src/models/qwen35.cpp
+index a1e2635..195e23a 100644
+--- a/src/models/qwen35.cpp
++++ b/src/models/qwen35.cpp
+@@ -41,7 +41,19 @@ void llama_model_qwen35::load_arch_tensors(llama_model_loader & ml) {
+ 
+     // output
+     output_norm = create_tensor(tn(LLM_TENSOR_OUTPUT_NORM, "weight"), { n_embd }, 0);
+-    output = create_tensor(tn(LLM_TENSOR_OUTPUT, "weight"), { n_embd, n_vocab }, TENSOR_NOT_REQUIRED);
++
++    // MTP-only sidecars may carry a reduced draft vocabulary: `output` then holds only the rows of
++    // the draft tokens and `d2t` maps each row to its target token id (same convention as EAGLE3).
++    // The draft logits are scattered back to the full vocabulary in graph_mtp.
++    int64_t n_vocab_out = n_vocab;
++    if (mtp_only) {
++        if (const ggml_tensor * d2t_meta = ml.get_tensor_meta("d2t")) {
++            n_vocab_out = d2t_meta->ne[0];
++            d2t = create_tensor(tn(LLM_TENSOR_D2T), { n_vocab_out }, 0);
++            LLAMA_LOG_INFO("%s: MTP sidecar with reduced draft vocabulary (n_draft_vocab = %lld)\n", __func__, (long long) n_vocab_out);
++        }
++    }
++    output = create_tensor(tn(LLM_TENSOR_OUTPUT, "weight"), { n_embd, n_vocab_out }, TENSOR_NOT_REQUIRED);
+ 
+     // if output is NULL, init from the input tok embed
+     if (output == NULL) {
+@@ -637,6 +649,23 @@ llama_model_qwen35::graph_mtp::graph_mtp(const llama_model & model, const llm_gr
+     ggml_tensor * head_s = layer.nextn.shared_head_head ? layer.nextn.shared_head_head_s : model.output_s;
+     GGML_ASSERT(head_w && "QWEN35 MTP: missing LM head (nextn.shared_head_head or model.output)");
+     cur = build_lora_mm(head_w, cur, head_s);
++
++    if (model.d2t && head_w == model.output) {
++        // reduced draft vocabulary: scatter the draft logits into full-size rows filled with -inf,
++        // so tokens outside the draft vocabulary are never proposed (the target still verifies all)
++        const int64_t n_draft_vocab = cur->ne[0];
++        const int64_t n_outputs     = cur->ne[1];
++        const int64_t n_vocab       = (int64_t) model.vocab.n_tokens();
++
++        GGML_ASSERT(model.d2t->type == GGML_TYPE_I64);
++        GGML_ASSERT(model.d2t->ne[0] == n_draft_vocab);
++
++        ggml_tensor * logits = ggml_fill(ctx0, ggml_new_tensor_3d(ctx0, GGML_TYPE_F32, 1, n_vocab, n_outputs), -INFINITY);
++        cur = ggml_set_rows(ctx0, logits,
++                ggml_reshape_3d(ctx0, cur,       1,             n_draft_vocab, n_outputs),
++                ggml_reshape_3d(ctx0, model.d2t, n_draft_vocab, 1,             1));
++        cur = ggml_reshape_2d(ctx0, cur, n_vocab, n_outputs);
++    }
+     cb(cur, "result_output", -1);
+ 
+     res->t_logits = cur;
+-- 
+2.55.0.windows.2
+

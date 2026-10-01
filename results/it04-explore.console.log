@@ -1,0 +1,115 @@
+canary start: 89.63 t/s
+block 0: {'engine': 'it03-full-n4', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 1}
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=    98.3ms tg= 161.92 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   106.0ms tg= 142.48 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=    91.5ms tg= 145.15 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=    70.7ms tg= 152.99 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   105.4ms tg= 140.93 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=    94.4ms tg= 157.17 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   120.3ms tg= 226.38 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=   576.5ms tg= 148.65 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   204.4ms tg= 188.37 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   105.3ms tg= 211.24 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=    91.7ms tg= 214.19 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=    82.2ms tg= 202.85 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   135.1ms tg= 195.84 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   121.9ms tg= 188.13 t/s
+  [b00_it03-full-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   189.2ms tg= 216.25 t/s
+block 1: {'engine': 'it04-n3', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 1}
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=    99.7ms tg= 132.70 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   101.5ms tg= 125.09 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=    74.2ms tg= 128.37 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=    89.8ms tg= 134.05 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   102.1ms tg= 116.46 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   446.1ms tg= 131.07 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   166.5ms tg= 166.92 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=  2070.2ms tg= 129.36 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   186.6ms tg= 152.48 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   109.7ms tg= 162.21 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=    97.6ms tg= 181.88 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=    91.5ms tg= 150.37 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   112.7ms tg= 158.49 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   169.3ms tg= 156.75 t/s
+  [b01_it04-n3_gemma4-e4b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   178.9ms tg= 171.26 t/s
+block 2: {'engine': 'it04-n4', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 1}
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=    80.1ms tg= 121.66 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   101.5ms tg= 107.92 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=    88.7ms tg= 112.21 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   108.7ms tg= 115.09 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   107.9ms tg= 105.24 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=    98.5ms tg= 113.87 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   133.0ms tg= 163.54 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=   570.1ms tg= 114.87 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   218.5ms tg= 137.58 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=    75.3ms tg= 156.01 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=    94.5ms tg= 173.07 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=    78.1ms tg= 140.98 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   110.7ms tg= 148.30 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   136.5ms tg= 140.82 t/s
+  [b02_it04-n4_gemma4-e4b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   175.1ms tg= 163.65 t/s
+block 3: {'engine': 'it04-n5', 'model': 'gemma4-e4b', 'workload': 'S-greedy', 'reps': 1}
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=    95.9ms tg= 101.58 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=    93.2ms tg=  93.98 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=    71.8ms tg=  96.81 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=    89.8ms tg=  99.69 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=    95.6ms tg=  90.47 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=    84.8ms tg=  98.03 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   137.9ms tg= 156.66 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=   593.1ms tg= 101.82 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   232.9ms tg= 130.61 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   115.3ms tg= 139.51 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=    91.3ms tg= 160.73 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   122.1ms tg= 126.53 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   124.2ms tg= 133.03 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   128.8ms tg= 127.43 t/s
+  [b03_it04-n5_gemma4-e4b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   173.4ms tg= 145.78 t/s
+block 4: {'engine': 'it03-rv64k-n3', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 1}
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=   230.9ms tg= 154.97 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   212.6ms tg= 162.08 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=   168.3ms tg= 154.59 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   181.4ms tg= 132.60 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   211.6ms tg= 143.37 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   159.9ms tg= 139.21 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   254.7ms tg= 174.76 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=  1094.9ms tg= 166.45 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   401.6ms tg= 161.76 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   164.3ms tg= 191.43 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=   204.8ms tg= 184.75 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   195.7ms tg= 184.75 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   286.5ms tg= 173.85 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   289.7ms tg= 161.66 t/s
+  [b04_it03-rv64k-n3_qwen35-9b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   325.5ms tg= 180.51 t/s
+block 5: {'engine': 'it04-n3', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 1}
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=   209.5ms tg= 161.40 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   174.8ms tg= 165.57 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=   143.1ms tg= 143.68 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   212.3ms tg= 139.68 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   196.2ms tg= 114.19 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   209.4ms tg= 156.10 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   797.4ms tg= 173.04 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=  1038.5ms tg= 167.04 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   372.1ms tg= 159.25 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   122.4ms tg= 190.03 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=   168.4ms tg= 188.52 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   152.1ms tg= 187.82 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   184.7ms tg= 175.59 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   248.5ms tg= 163.57 t/s
+  [b05_it04-n3_qwen35-9b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   295.0ms tg= 180.21 t/s
+block 6: {'engine': 'it04-n4', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 1}
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=   190.5ms tg= 159.30 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   166.0ms tg= 165.83 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=   145.5ms tg= 157.65 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   166.9ms tg= 130.31 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   203.9ms tg= 143.51 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   178.7ms tg= 129.47 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   223.4ms tg= 180.92 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=  1082.5ms tg= 167.95 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   385.5ms tg= 157.20 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   149.3ms tg= 191.03 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=   150.1ms tg= 211.49 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   156.3ms tg= 191.16 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   188.5ms tg= 181.38 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   263.2ms tg= 161.72 t/s
+  [b06_it04-n4_qwen35-9b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   322.9ms tg= 188.96 t/s
+canary end: 89.18 t/s  drift=-0.50%  valid=True
+session dir: H:\python-projects\Fast llama\results\raw\20260930-215236_it04-explore

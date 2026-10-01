@@ -1,0 +1,79 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon RX 7800 XT (AMD proprietary driver) | uma: 0 | fp16: 1 | bf16: 1 | fp4: 0 | warp size: 64 | shared memory: 32768 | int dot: 1 | matrix cores: KHR_coopmat
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+----------------
+Vulkan Timings:
+ADD: 88 x 5.475 us = 481.88 us
+CONCAT: 24 x 7.033 us = 168.8 us
+CONT: 8 x 4.255 us = 34.04 us
+CPY: 48 x 7.359 us = 353.24 us
+FLASH_ATTN_EXT dst(256,16,3,1),  q(256,3,16,1),  k(256,256,4,1),  v(256,256,4,1),  m(256,3,1,1): 8 x 144.196 us = 1153.57 us (87.2624 GFLOPS/s)
+GATED_DELTA_NET: 24 x 18.211 us = 437.08 us
+GET_ROWS: 49 x 7.453 us = 365.2 us
+GLU: 32 x 5.405 us = 172.96 us
+MUL_MAT_VEC q4_K m=1024 n=3 k=4096: 11 x 10.12 us = 111.32 us (2486.44 GFLOPS/s)
+MUL_MAT_VEC q4_K m=12288 n=3 k=4096: 64 x 96.995 us = 6207.72 us (3113.06 GFLOPS/s)
+MUL_MAT_VEC q4_K m=4096 n=3 k=12288: 16 x 150.935 us = 2414.96 us (2000.71 GFLOPS/s)
+MUL_MAT_VEC q4_K m=4096 n=3 k=4096: 32 x 36.955 us = 1182.56 us (2723.61 GFLOPS/s)
+MUL_MAT_VEC q4_K m=8192 n=3 k=4096: 8 x 67.455 us = 539.64 us (2984.24 GFLOPS/s)
+MUL_MAT_VEC q5_K m=4096 n=3 k=4096: 24 x 42.455 us = 1018.92 us (2370.77 GFLOPS/s)
+MUL_MAT_VEC q5_K m=8192 n=3 k=4096: 24 x 432.11 us = 10370.7 us (465.857 GFLOPS/s)
+MUL_MAT_VEC q6_K m=1024 n=3 k=4096: 5 x 17.784 us = 88.92 us (1414.91 GFLOPS/s)
+MUL_MAT_VEC q6_K m=248320 n=1 k=4096: 1 x 1399.84 us = 1399.84 us (1453.02 GFLOPS/s)
+MUL_MAT_VEC q6_K m=4096 n=3 k=12288: 16 x 122.9 us = 1966.4 us (2457.1 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=32 n=3 k=4096: 48 x 7.116 us = 341.6 us (110.492 GFLOPS/s)
+RMS_NORM(128,16,3,1): 48 x 5.34 us = 256.36 us
+RMS_NORM_MUL RMS_NORM(128,32,3,1): 24 x 8.46 us = 203.04 us
+RMS_NORM_MUL RMS_NORM(256,16,3,1): 8 x 5.755 us = 46.04 us
+RMS_NORM_MUL RMS_NORM(256,4,3,1): 8 x 6.8 us = 54.4 us
+RMS_NORM_MUL RMS_NORM(4096,3,1,1): 65 x 10.114 us = 657.44 us
+ROPE: 8 x 6.255 us = 50.04 us
+ROPE_VIEW_SET_ROWS ROPE: 8 x 6.54 us = 52.32 us
+SCALE: 96 x 6.701 us = 643.32 us
+SET_ROWS: 8 x 4.68 us = 37.44 us
+SIGMOID: 24 x 4.238 us = 101.72 us
+SIGMOID_MUL SIGMOID: 8 x 5.45 us = 43.6 us
+SILU_MUL SILU: 24 x 5.826 us = 139.84 us
+SOFTPLUS_MUL SOFTPLUS: 24 x 4.85 us = 116.4 us
+SSM_CONV_SILU SSM_CONV: 24 x 4.131 us = 99.16 us
+Total time: 31310.4 us.
+----------------
+Vulkan Timings:
+ADD: 88 x 3.186 us = 280.4 us
+CONCAT: 24 x 4.28 us = 102.72 us
+CONT: 8 x 2.5 us = 20 us
+CPY: 48 x 4.526 us = 217.28 us
+FLASH_ATTN_EXT dst(256,16,3,1),  q(256,3,16,1),  k(256,256,4,1),  v(256,256,4,1),  m(256,3,1,1): 8 x 21.84 us = 174.72 us (576.141 GFLOPS/s)
+GATED_DELTA_NET: 24 x 11.095 us = 266.28 us
+GET_ROWS: 49 x 4.529 us = 221.96 us
+GLU: 32 x 3.05 us = 97.6 us
+MUL_MAT_VEC q4_K m=1024 n=3 k=4096: 11 x 5.763 us = 63.4 us (4365.78 GFLOPS/s)
+MUL_MAT_VEC q4_K m=12288 n=3 k=4096: 64 x 54.044 us = 3458.84 us (5587.13 GFLOPS/s)
+MUL_MAT_VEC q4_K m=4096 n=3 k=12288: 16 x 54.3 us = 868.8 us (5561.28 GFLOPS/s)
+MUL_MAT_VEC q4_K m=4096 n=3 k=4096: 32 x 21.997 us = 703.92 us (4575.57 GFLOPS/s)
+MUL_MAT_VEC q4_K m=8192 n=3 k=4096: 8 x 37.22 us = 297.76 us (5408.44 GFLOPS/s)
+MUL_MAT_VEC q5_K m=4096 n=3 k=4096: 24 x 26.045 us = 625.08 us (3864.5 GFLOPS/s)
+MUL_MAT_VEC q5_K m=8192 n=3 k=4096: 24 x 44.661 us = 1071.88 us (4507.27 GFLOPS/s)
+MUL_MAT_VEC q6_K m=1024 n=3 k=4096: 5 x 10.792 us = 53.96 us (2331.61 GFLOPS/s)
+MUL_MAT_VEC q6_K m=248320 n=1 k=4096: 1 x 1413.68 us = 1413.68 us (1438.79 GFLOPS/s)
+MUL_MAT_VEC q6_K m=4096 n=3 k=12288: 16 x 87.955 us = 1407.28 us (3433.32 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=32 n=3 k=4096: 48 x 4.379 us = 210.2 us (179.563 GFLOPS/s)
+RMS_NORM(128,16,3,1): 48 x 3.633 us = 174.4 us
+RMS_NORM_MUL RMS_NORM(128,32,3,1): 24 x 5.063 us = 121.52 us
+RMS_NORM_MUL RMS_NORM(256,16,3,1): 8 x 3.535 us = 28.28 us
+RMS_NORM_MUL RMS_NORM(256,4,3,1): 8 x 3.055 us = 24.44 us
+RMS_NORM_MUL RMS_NORM(4096,3,1,1): 65 x 6.228 us = 404.84 us
+ROPE: 8 x 4.015 us = 32.12 us
+ROPE_VIEW_SET_ROWS ROPE: 8 x 4.165 us = 33.32 us
+SCALE: 96 x 4.418 us = 424.16 us
+SET_ROWS: 8 x 2.505 us = 20.04 us
+SIGMOID: 24 x 2.535 us = 60.84 us
+SIGMOID_MUL SIGMOID: 8 x 3.58 us = 28.64 us
+SILU_MUL SILU: 24 x 3.555 us = 85.32 us
+SOFTPLUS_MUL SOFTPLUS: 24 x 2.916 us = 70 us
+SSM_CONV_SILU SSM_CONV: 24 x 1.943 us = 46.64 us
+Total time: 13110.3 us.
+| qwen35 9B Q4_K - Medium        |   5.28 GiB |     8.95 B | Vulkan     |  99 |             pp3 |        171.97 ± 0.00 |
+
+build: 25747b0 (1)

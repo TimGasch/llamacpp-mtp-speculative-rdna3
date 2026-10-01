@@ -1,0 +1,122 @@
+{
+ "name": "dev-vulkan_qwen35-9b_dev_ub4_it01-decodeonce",
+ "date": "2026-09-30T20:41:21.352734",
+ "cmd": [
+  "H:\\python-projects\\Fast llama\\build\\dev-vulkan\\bin\\qdump.exe",
+  "--segs",
+  "H:\\python-projects\\Fast llama\\eval\\dev\\q1_segments_qwen35-9b.txt",
+  "--ub",
+  "4",
+  "--out",
+  "H:\\python-projects\\Fast llama\\results\\q1dumps\\dev-vulkan_qwen35-9b_dev_ub4_it01-decodeonce",
+  "--",
+  "-m",
+  "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+  "-ngl",
+  "99",
+  "-c",
+  "40960",
+  "-np",
+  "1"
+ ],
+ "wall_s": 47.10836100578308,
+ "engine": {
+  "description": "DEV working build of src/llama.cpp-dev (branch fastllama); state per journal entry / patch file",
+  "server": "build/dev-vulkan/bin/llama-server.exe",
+  "qdump": "build/dev-vulkan/bin/qdump.exe",
+  "bench": "build/dev-vulkan/bin/llama-bench.exe",
+  "buildinfo": "date: 2026-09-30T20:39:07+02:00\nsrc: /h/python-projects/Fast llama/src/llama.cpp-dev\ncommit: 25747b08e7a0f9a59a2089ce6b98d2229b76042a\ndescribe: b11284-dirty\ndirty-diff-sha256: aa82c03eef64c1e3530e76ee93459fb0793d880a20cd10b4a321313ad775139d\ncompiler: clang version 23.1.2 (https://github.com/llvm/llvm-project.git 85ac560262434c9ccfc0c183ec22d4138ed647fb)\ncmake: cmake version 4.4.3\nninja: 1.13.2.git.kitware.jobserver-pipe-1\nglslc: shaderc v2026.2 v2026.2\ncmake-args: -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON -DGGML_NATIVE=ON -DLLAMA_OPENSSL=OFF -DLLAMA_USE_PREBUILT_UI=OFF -DLLAMA_BUILD_TESTS=ON -DCMAKE_C_FLAGS=-D_WIN32_WINNT=0x0A00 -DCMAKE_CXX_FLAGS=-D_WIN32_WINNT=0x0A00\nruntime-dlls: copied from /h/python-projects/Fast llama/toolchain/llvm-mingw-20260922-ucrt-x86_64/x86_64-w64-mingw32/bin\n",
+  "extra_args": [],
+  "name": "dev-vulkan",
+  "config_sha256": "a8b2c3483870b2f48d2c2452421c3a710f354a5525d63156220d43b0f016e2a3",
+  "server_sha256": "e55071d4fe849ffcad6b228cc28365fc9522f4bd6b47a8a818f0d5cd7a894466",
+  "qdump_sha256": "7a0108645518518caf0a5e3ebaf7066199c3ffd6ea2d9f7b932696c2fc83c7a0",
+  "bench_sha256": "cdeed32e30a02661db2d54c8c6eb04a533275809a8cae8c6b71a36a43b524e40"
+ },
+ "model": "qwen35-9b",
+ "split": "dev",
+ "ub": 4,
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "segments_file_sha256": "c7cdad9e7d6db96c4bfb04ed0d6e9797d96f9879bcd6fc8e87c6bdc1ca44a21b",
+ "logits_sha256": "42a691aa683444558b1bde21ffb78536db5edaccfab7f10a9036900d1814e02a",
+ "qdump_meta": {
+  "tool": "qdump",
+  "ub": 4,
+  "n_vocab": 248320,
+  "n_ctx": 40960,
+  "n_batch": 2048,
+  "n_ubatch": 512,
+  "n_scored_total": 5120,
+  "t_scored_ms": 28866.7,
+  "llama_args": [
+   "-m",
+   "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+   "-ngl",
+   "99",
+   "-c",
+   "40960",
+   "-np",
+   "1"
+  ],
+  "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+  "segments": [
+   {
+    "id": "dev-long-03",
+    "n_tokens": 16385,
+    "n_prefix": 15360,
+    "n_scored": 1024
+   },
+   {
+    "id": "dev-corpus-00",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-01",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-02",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-03",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-04",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-05",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-06",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "dev-corpus-07",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   }
+  ]
+ }
+}

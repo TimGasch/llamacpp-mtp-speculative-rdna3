@@ -1,0 +1,11 @@
+{
+  "description": "SECONDARY REFERENCE candidate: unmodified b11284 + built-in draft-simple speculation with Qwen3.5-0.8B-Q8_0 as draft model, --spec-draft-n-max 6 (Qwen only).",
+  "server": "build/ref-vulkan/bin/llama-server.exe",
+  "qdump": "build/ref-vulkan/bin/qdump.exe",
+  "bench": "build/ref-vulkan/bin/llama-bench.exe",
+  "buildinfo": "build/ref-vulkan/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": ["-md", "H:/python-projects/Fast llama/models/Qwen3.5-0.8B-Q8_0.gguf", "--spec-type", "draft-simple", "--spec-draft-n-max", "6"]
+  }
+}

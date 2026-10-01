@@ -1,0 +1,41 @@
+From 991c2e61c88cf66fda1e8d773188df848f1c21f1 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Wed, 30 Sep 2026 21:52:53 +0200
+Subject: [PATCH] vulkan: small batches use the decode-path activation
+ precision rule
+
+ggml_vk_should_use_mmvq returned true for every n > 1, so batched mat-vec (n = 2..8, e.g.
+speculative verification) quantized activations to q8_1 even where single-token decode keeps
+them in float (e.g. Q8_0 weights on RDNA). Apply the same per-type/per-k rule for all n <=
+mul_mat_vec_max_cols. On Gemma 4 E4B Q8_0 this makes the ub=4/ub=5 verification logits almost
+identical to single-token decoding (mean KLD vs ub=1: 1.6e-3 -> 1.8e-6 at ub=4, 2.1e-3 ->
+2.6e-5 at ub=5).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ ggml/src/ggml-vulkan/ggml-vulkan.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/ggml/src/ggml-vulkan/ggml-vulkan.cpp b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+index 11d734f..56a87a8 100644
+--- a/ggml/src/ggml-vulkan/ggml-vulkan.cpp
++++ b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+@@ -6556,10 +6556,11 @@ static bool ggml_vk_should_use_mmvq(const vk_device& device, uint32_t m, uint32_
+         return false;
+     }
+ 
+-    // MMVQ is generally good for batches
+-    if (n > 1) {
+-        return true;
+-    }
++    // Small batches (n = 2..mul_mat_vec_max_cols, e.g. speculative verification) use the same
++    // activation-precision choice as single-token decode, so that verifying drafted tokens
++    // reproduces the numerics of generating them one by one (fastllama iteration 4). The previous
++    // "always MMVQ for n > 1" rule quantized activations to q8_1 only in the batched path.
++    GGML_UNUSED(n);
+ 
+     // Quantization overhead is not worth it for small k
+     switch (device->vendor_id) {
+-- 
+2.55.0.windows.2
+

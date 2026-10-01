@@ -1,0 +1,147 @@
+{
+ "label": "holdout_envelope_qwen35-9b_ub1_holdout-fa-off",
+ "date": "2026-10-01T00:40:04.628559",
+ "ref": "ref-vulkan_qwen35-9b_holdout_ub1_holdout",
+ "cand": "ref-vulkan_qwen35-9b_holdout_ub1_holdout-fa-off",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "ref_logits_sha256": "d1872e6cb366f06db8abfdccf9d382fde1d54ee048a952205a84b89b0cec1baa",
+ "cand_logits_sha256": "033a24214c17cbbdd9dfa9fe3c631a4740119f58c40dbae8e6ef668670f93303",
+ "gates": {
+  "mean_kld_max": 0.0005,
+  "p99_kld_max": 0.005,
+  "top1_agree_min": 0.995,
+  "abs_ln_ppl_ratio_max": 0.001
+ },
+ "summary": {
+  "n": 5120,
+  "mean_kld": 0.00033272060590426995,
+  "p99_kld": 0.002788469315422932,
+  "max_kld": 0.014943345285062548,
+  "top1_agree": 0.9916015625,
+  "ppl_ref": 6.478407230424797,
+  "ppl_cand": 6.483882857426719,
+  "abs_ln_ppl_ratio": 0.0008448549277188036,
+  "bit_identical_rows": 0,
+  "max_abs_logit_diff": 2.7053704261779785
+ },
+ "verdict": {
+  "mean_kld": true,
+  "p99_kld": true,
+  "top1_agree": false,
+  "ppl_ratio": true
+ },
+ "pass": false,
+ "per_segment": {
+  "holdout-long-03": {
+   "n": 1024,
+   "mean_kld": 0.0004120415849378901,
+   "p99_kld": 0.0023833166168588647,
+   "max_kld": 0.0052728588482423115,
+   "top1_agree": 0.9873046875,
+   "ppl_ref": 13.37941173935803,
+   "ppl_cand": 13.401825961754284,
+   "abs_ln_ppl_ratio": 0.0016738754108276404,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 0.7636172771453857
+  },
+  "holdout-corpus-00": {
+   "n": 512,
+   "mean_kld": 0.00034889120233110634,
+   "p99_kld": 0.002791417350035503,
+   "max_kld": 0.01461026707271691,
+   "top1_agree": 0.98828125,
+   "ppl_ref": 9.761440162247872,
+   "ppl_cand": 9.781887181115824,
+   "abs_ln_ppl_ratio": 0.002092481589166551,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 0.6328891515731812
+  },
+  "holdout-corpus-01": {
+   "n": 512,
+   "mean_kld": 0.0006446496540631154,
+   "p99_kld": 0.005280517855762555,
+   "max_kld": 0.014943345285062548,
+   "top1_agree": 0.984375,
+   "ppl_ref": 3.516602678677439,
+   "ppl_cand": 3.522106972931373,
+   "abs_ln_ppl_ratio": 0.0015640069411554896,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.0859042406082153
+  },
+  "holdout-corpus-02": {
+   "n": 512,
+   "mean_kld": 0.00023434519718045876,
+   "p99_kld": 0.0013713259381341117,
+   "max_kld": 0.002922735972285508,
+   "top1_agree": 0.98828125,
+   "ppl_ref": 7.787329714088179,
+   "ppl_cand": 7.796577522797397,
+   "abs_ln_ppl_ratio": 0.0011868409705186641,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.7954776287078857
+  },
+  "holdout-corpus-03": {
+   "n": 512,
+   "mean_kld": 0.000255010985431035,
+   "p99_kld": 0.0026105671959142907,
+   "max_kld": 0.007998279841548491,
+   "top1_agree": 0.998046875,
+   "ppl_ref": 1.855675801186028,
+   "ppl_cand": 1.8547486514067821,
+   "abs_ln_ppl_ratio": 0.0004997540364388839,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.7364144325256348
+  },
+  "holdout-corpus-04": {
+   "n": 512,
+   "mean_kld": 0.0001453363149479104,
+   "p99_kld": 0.0012404794575322487,
+   "max_kld": 0.0075484198002923756,
+   "top1_agree": 0.99609375,
+   "ppl_ref": 2.1738537393811077,
+   "ppl_cand": 2.1701619651734436,
+   "abs_ln_ppl_ratio": 0.0016997061463605236,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 2.7053704261779785
+  },
+  "holdout-corpus-05": {
+   "n": 512,
+   "mean_kld": 0.0002957426399990443,
+   "p99_kld": 0.0014746262650431922,
+   "max_kld": 0.00205455498273745,
+   "top1_agree": 0.998046875,
+   "ppl_ref": 9.089041204543955,
+   "ppl_cand": 9.099504692447123,
+   "abs_ln_ppl_ratio": 0.0011505580618384255,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 0.44247448444366455
+  },
+  "holdout-corpus-06": {
+   "n": 512,
+   "mean_kld": 0.0002784424593115243,
+   "p99_kld": 0.002094921468808364,
+   "max_kld": 0.013486266550773817,
+   "top1_agree": 0.998046875,
+   "ppl_ref": 8.521125332604534,
+   "ppl_cand": 8.529965557735283,
+   "abs_ln_ppl_ratio": 0.0010369103044110576,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.1103668212890625
+  },
+  "holdout-corpus-07": {
+   "n": 512,
+   "mean_kld": 0.0003007044359027251,
+   "p99_kld": 0.0018661512773795058,
+   "max_kld": 0.008920328519575268,
+   "top1_agree": 0.990234375,
+   "ppl_ref": 8.710341670555973,
+   "ppl_cand": 8.712689082193815,
+   "abs_ln_ppl_ratio": 0.00026946077124681805,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.0546860694885254
+  }
+ }
+}

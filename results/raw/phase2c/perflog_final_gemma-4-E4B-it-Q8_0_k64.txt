@@ -1,0 +1,77 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon RX 7800 XT (AMD proprietary driver) | uma: 0 | fp16: 1 | bf16: 1 | fp4: 0 | warp size: 64 | shared memory: 32768 | int dot: 1 | matrix cores: KHR_coopmat
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+----------------
+Vulkan Timings:
+CONT: 1 x 11.48 us = 11.48 us
+FLASH_ATTN_EXT dst(256,8,64,1),  q(256,64,8,1),  k(256,256,2,1),  v(256,256,2,1),  m(256,64,1,1): 35 x 23.506 us = 822.72 us (5709.87 GFLOPS/s)
+FLASH_ATTN_EXT dst(512,8,64,1),  q(512,64,8,1),  k(512,256,2,1),  v(512,256,2,1),  m(256,64,1,1): 7 x 48.611 us = 340.28 us (5522.06 GFLOPS/s)
+GELU: 1 x 2.56 us = 2.56 us
+GELU_MUL GELU: 41 x 3.321 us = 136.2 us
+GET_ROWS: 1 x 3.16 us = 3.16 us
+GLU: 42 x 7.322 us = 307.56 us
+MUL: 1 x 3.68 us = 3.68 us
+MUL_MAT bf16 m=10752 n=64 k=2560: 1 x 2301.83 us = 2301.83 us (1530.32 GFLOPS/s)
+MUL_MAT f32 m=256 n=64 k=2560: 42 x 32.741 us = 1375.16 us (2561.54 GFLOPS/s)
+MUL_MAT f32 m=2560 n=64 k=256: 42 x 16.798 us = 705.52 us (4984.03 GFLOPS/s)
+MUL_MAT q8_0 m=1024 n=64 k=2560: 8 x 18.75 us = 150 us (17892.2 GFLOPS/s)
+MUL_MAT q8_0 m=10240 n=64 k=2560: 84 x 142.059 us = 11933 us (23615.4 GFLOPS/s)
+MUL_MAT q8_0 m=2048 n=64 k=2560: 35 x 127.159 us = 4450.57 us (5276.52 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=10240: 42 x 192.012 us = 8064.52 us (17474.3 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=2048: 35 x 85.826 us = 3003.92 us (7817.24 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=4096: 7 x 72.222 us = 505.56 us (18581.6 GFLOPS/s)
+MUL_MAT q8_0 m=4096 n=64 k=2560: 7 x 108.114 us = 756.8 us (12412 GFLOPS/s)
+MUL_MAT q8_0 m=512 n=64 k=2560: 40 x 21.866 us = 874.64 us (7671.24 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=262144 n=1 k=2560: 1 x 3329.92 us = 3329.92 us (402.987 GFLOPS/s)
+RMS_NORM_MUL RMS_NORM(2560,64,1,1): 85 x 5.953 us = 506.08 us
+RMS_NORM_MUL_ADD RMS_NORM(256,42,64,1): 1 x 34.36 us = 34.36 us
+RMS_NORM_MUL_ADD RMS_NORM(2560,64,1,1): 84 x 6.283 us = 527.8 us
+RMS_NORM_MUL_ADD_MUL RMS_NORM(2560,64,1,1): 42 x 6.766 us = 284.2 us
+RMS_NORM_MUL_ROPE RMS_NORM(256,8,64,1): 35 x 11.472 us = 401.52 us
+RMS_NORM_MUL_ROPE RMS_NORM(512,8,64,1): 7 x 11.171 us = 78.2 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(256,2,64,1): 20 x 7.136 us = 142.72 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(512,2,64,1): 4 x 7.44 us = 29.76 us
+RMS_NORM_VIEW_SET_ROWS RMS_NORM(256,2,64,1): 20 x 3.688 us = 73.76 us
+RMS_NORM_VIEW_SET_ROWS RMS_NORM(512,2,64,1): 4 x 4.16 us = 16.64 us
+SCALE: 6 x 9.393 us = 56.36 us
+TANH: 1 x 6.16 us = 6.16 us
+Total time: 41236.6 us.
+----------------
+Vulkan Timings:
+CONT: 1 x 11.44 us = 11.44 us
+FLASH_ATTN_EXT dst(256,8,64,1),  q(256,64,8,1),  k(256,256,2,1),  v(256,256,2,1),  m(256,64,1,1): 35 x 23.579 us = 825.28 us (5692.15 GFLOPS/s)
+FLASH_ATTN_EXT dst(512,8,64,1),  q(512,64,8,1),  k(512,256,2,1),  v(512,256,2,1),  m(256,64,1,1): 7 x 47.022 us = 329.16 us (5708.62 GFLOPS/s)
+GELU: 1 x 2.52 us = 2.52 us
+GELU_MUL GELU: 41 x 3.349 us = 137.32 us
+GET_ROWS: 1 x 3.24 us = 3.24 us
+GLU: 42 x 7.066 us = 296.8 us
+MUL: 1 x 3.68 us = 3.68 us
+MUL_MAT bf16 m=10752 n=64 k=2560: 1 x 467.76 us = 467.76 us (7530.63 GFLOPS/s)
+MUL_MAT f32 m=256 n=64 k=2560: 42 x 33.343 us = 1400.44 us (2515.3 GFLOPS/s)
+MUL_MAT f32 m=2560 n=64 k=256: 42 x 16.855 us = 707.92 us (4967.13 GFLOPS/s)
+MUL_MAT q8_0 m=1024 n=64 k=2560: 8 x 18.42 us = 147.36 us (18212.7 GFLOPS/s)
+MUL_MAT q8_0 m=10240 n=64 k=2560: 84 x 128.73 us = 10813.4 us (26060.6 GFLOPS/s)
+MUL_MAT q8_0 m=2048 n=64 k=2560: 35 x 45.998 us = 1609.96 us (14586.4 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=10240: 42 x 138.579 us = 5820.32 us (24212 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=2048: 35 x 43.598 us = 1525.96 us (15388.6 GFLOPS/s)
+MUL_MAT q8_0 m=2560 n=64 k=4096: 7 x 373.148 us = 2612.04 us (3596.46 GFLOPS/s)
+MUL_MAT q8_0 m=4096 n=64 k=2560: 7 x 108.188 us = 757.32 us (12403.5 GFLOPS/s)
+MUL_MAT q8_0 m=512 n=64 k=2560: 40 x 21.784 us = 871.36 us (7700.12 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=262144 n=1 k=2560: 1 x 1191 us = 1191 us (1126.71 GFLOPS/s)
+RMS_NORM_MUL RMS_NORM(2560,64,1,1): 85 x 5.88 us = 499.88 us
+RMS_NORM_MUL_ADD RMS_NORM(256,42,64,1): 1 x 34.36 us = 34.36 us
+RMS_NORM_MUL_ADD RMS_NORM(2560,64,1,1): 84 x 6.225 us = 522.92 us
+RMS_NORM_MUL_ADD_MUL RMS_NORM(2560,64,1,1): 42 x 6.804 us = 285.8 us
+RMS_NORM_MUL_ROPE RMS_NORM(256,8,64,1): 35 x 11.563 us = 404.72 us
+RMS_NORM_MUL_ROPE RMS_NORM(512,8,64,1): 7 x 11.171 us = 78.2 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(256,2,64,1): 20 x 7.14 us = 142.8 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(512,2,64,1): 4 x 7.23 us = 28.92 us
+RMS_NORM_VIEW_SET_ROWS RMS_NORM(256,2,64,1): 20 x 3.686 us = 73.72 us
+RMS_NORM_VIEW_SET_ROWS RMS_NORM(512,2,64,1): 4 x 4.12 us = 16.48 us
+SCALE: 6 x 8.493 us = 50.96 us
+TANH: 1 x 6.2 us = 6.2 us
+Total time: 31679.2 us.
+| gemma4 E4B Q8_0                |   7.62 GiB |     7.52 B | Vulkan     |  99 |            pp64 |       1758.11 ± 0.00 |
+
+build: 865c8bf (4)

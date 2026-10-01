@@ -1,0 +1,151 @@
+From 277447cb0446ee5eb8c708b10e304ea7260555d0 Mon Sep 17 00:00:00 2001
+From: Fast llama project <noreply@anthropic.com>
+Date: Thu, 1 Oct 2026 17:52:28 +0200
+Subject: [PATCH 7/7] speculative: MTP prompt window (draft-only)
+
+During prompt processing the MTP drafter no longer decodes every prompt ubatch through its
+MTP layer. It buffers (token, pos, target hidden state) of the last W prompt positions
+(FASTLLAMA_MTP_PROMPT_WINDOW, default 2048, 0 = previous behaviour) and decodes them once in
+begin() / before the first non-prompt batch. Prompt batches are recognised by their output
+flags (verification batches request logits for every row). Removes most of the drafter's
+prefill overhead on long prompts (Qwen3.5 TTFT ratio vs no speculation at 4k-32k: 1.071 ->
+1.025 on dev). Only draft proposals are affected; the target verifies every token.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ common/speculative.cpp | 88 ++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 85 insertions(+), 3 deletions(-)
+
+diff --git a/common/speculative.cpp b/common/speculative.cpp
+index 82e9e92..96062e2 100644
+--- a/common/speculative.cpp
++++ b/common/speculative.cpp
+@@ -1438,6 +1438,61 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+ 
+         verify_h.assign(n_seq, {});
+         verify_h_rows.assign(n_seq, 0);
++
++        // prompt window: only the last pw_size prompt positions are fed to the draft context
++        if (const char * env = getenv("FASTLLAMA_MTP_PROMPT_WINDOW")) {
++            pw_size = std::max(0, atoi(env));
++        }
++        pw_tok.assign(n_seq, std::vector<llama_token>(pw_size));
++        pw_pos.assign(n_seq, std::vector<llama_pos>(pw_size));
++        pw_h.assign(n_seq, std::vector<float>((size_t) pw_size * n_embd));
++        pw_count.assign(n_seq, 0);
++        pw_head.assign(n_seq, 0);
++    }
++
++    // Prompt window (fastllama): while the target processes the prompt, the draft context does not
++    // decode every prompt ubatch. Instead the (token, pos, target hidden state) rows of the last
++    // pw_size prompt positions are buffered here and decoded once when the prompt is complete
++    // (begin()) or before the first non-prompt batch. The MTP head then attends only to the last
++    // pw_size prompt positions. This only affects draft proposals; the target verifies every token.
++    int32_t pw_size = 2048; // 0 = disabled (stock behaviour)
++    std::vector<std::vector<llama_token>> pw_tok;
++    std::vector<std::vector<llama_pos>>   pw_pos;
++    std::vector<std::vector<float>>       pw_h;
++    std::vector<int32_t>                  pw_count;
++    std::vector<int32_t>                  pw_head;
++
++    void pw_push(llama_seq_id seq_id, llama_token id, llama_pos pos, const float * h) {
++        const int32_t i = pw_head[seq_id];
++        pw_tok[seq_id][i] = id;
++        pw_pos[seq_id][i] = pos;
++        std::memcpy(pw_h[seq_id].data() + (size_t) i * n_embd, h, (size_t) n_embd * sizeof(float));
++        pw_head[seq_id]  = (i + 1) % pw_size;
++        pw_count[seq_id] = std::min(pw_count[seq_id] + 1, pw_size);
++    }
++
++    bool pw_flush(llama_seq_id seq_id) {
++        if (pw_size <= 0 || pw_count[seq_id] == 0) {
++            return true;
++        }
++        const int32_t n     = pw_count[seq_id];
++        const int32_t start = (pw_head[seq_id] - n + pw_size) % pw_size;
++
++        batch.clear();
++        for (int32_t j = 0; j < n; ++j) {
++            const int32_t i   = (start + j) % pw_size;
++            const int32_t idx = batch.add(pw_tok[seq_id][i], pw_pos[seq_id][i], seq_id, false);
++            batch.set_embd(idx, { pw_h[seq_id].data() + (size_t) i * n_embd, 1, (size_t) n_embd });
++        }
++        pw_count[seq_id] = 0;
++        pw_head[seq_id]  = 0;
++
++        const int32_t rc = llama_process(this->params.ctx_dft, LLAMA_PROCESS_TYPE_DECODE, batch.get());
++        if (rc != 0) {
++            SPC_ERR("prompt-window flush: llama_process(ctx_dft) failed rc=%d\n", (int) rc);
++            return false;
++        }
++        return true;
+     }
+ 
+     ~common_speculative_impl_draft_mtp() override {
+@@ -1461,6 +1516,11 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+         }
+ 
+         auto * ctx_dft = this->params.ctx_dft;
++
++        if (!is_mem_shared && !chain_heads) {
++            pw_flush(seq_id);
++        }
++
+         const llama_pos pos_max = llama_memory_seq_pos_max(llama_get_memory(ctx_dft), seq_id);
+ 
+         if (pos_max < N - 1 && !is_mem_shared) {
+@@ -1506,6 +1566,23 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+ 
+         // if kv is shared with target (e.g Gemma4), then we can skip this catch-up decode
+         if (!is_mem_shared) {
++            // prompt-window mode: a sequence whose rows in this batch are not all outputs is still
++            // processing its prompt (verification batches request logits for every row)
++            const bool use_pw = pw_size > 0 && !chain_heads;
++            std::vector<bool> seq_prompt(n_seq, false);
++            if (use_pw) {
++                for (int k = 0; k < n_tokens; ++k) {
++                    if (!batch_in.tokens[k].output) {
++                        seq_prompt[batch_in.tokens[k].seq_id] = true;
++                    }
++                }
++                for (llama_seq_id seq_id = 0; seq_id < (llama_seq_id) n_seq; ++seq_id) {
++                    if (i_batch_beg[seq_id] >= 0 && !seq_prompt[seq_id] && !pw_flush(seq_id)) {
++                        return false;
++                    }
++                }
++            }
++
+             batch.clear();
+ 
+             // pair each token with the tgt embedding shifted right by one position, and
+@@ -1519,19 +1596,24 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+             for (int k = 0; k < n_tokens; ++k) {
+                 const llama_seq_id seq_id = batch_in.tokens[k].seq_id;
+ 
+-                const int32_t idx = batch.add(batch_in.tokens[k].id, batch_in.tokens[k].pos[0], seq_id, false);
+-
+                 const float * h_row = k == i_batch_beg[seq_id]
+                     ? pending_h[seq_id].data()
+                     : h_tgt + (size_t) (k - 1) * n_embd;
+ 
++                if (use_pw && seq_prompt[seq_id]) {
++                    pw_push(seq_id, batch_in.tokens[k].id, batch_in.tokens[k].pos[0], h_row);
++                    continue;
++                }
++
++                const int32_t idx = batch.add(batch_in.tokens[k].id, batch_in.tokens[k].pos[0], seq_id, false);
++
+                 batch.set_embd(idx, { h_row, 1, (size_t) n_embd });
+             }
+ 
+             auto * mem_dft = llama_get_memory(ctx_dft);
+ 
+             bool ok = true;
+-            for (int head = 0; head < n_mtp_layers; ++head) {
++            for (int head = 0; head < n_mtp_layers && batch.size() > 0; ++head) {
+                 if (chain_heads) {
+                     // ref: https://github.com/ggml-org/llama.cpp/pull/24340/changes#r3413498544
+                     for (llama_seq_id seq_id = 0; seq_id < (llama_seq_id) n_seq; ++seq_id) {
+-- 
+2.55.0.windows.2
+

@@ -1,0 +1,26 @@
+{
+  "description": "EXPERIMENT: iteration 1 + no RDNA3 4-row override (patches/llama.cpp/exp-rows1.diff) + stock draft-mtp --spec-draft-n-max 5",
+  "server": "build/exp-rows1/bin/llama-server.exe",
+  "qdump": "build/exp-rows1/bin/qdump.exe",
+  "bench": "build/exp-rows1/bin/llama-bench.exe",
+  "buildinfo": "build/exp-rows1/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "5"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "5"
+    ]
+  }
+}

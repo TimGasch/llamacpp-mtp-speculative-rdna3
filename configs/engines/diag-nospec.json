@@ -1,0 +1,9 @@
+{
+  "description": "DIAGNOSTIC ONLY: final source + DEBUG_TIMINGS, no speculation",
+  "server": "build/diag-timings/bin/llama-server.exe",
+  "qdump": "build/diag-timings/bin/qdump.exe",
+  "bench": "build/diag-timings/bin/llama-bench.exe",
+  "buildinfo": "build/diag-timings/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {}
+}

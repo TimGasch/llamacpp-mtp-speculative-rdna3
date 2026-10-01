@@ -1,0 +1,6 @@
+{
+  "description": "Official prebuilt llama.cpp b11284 Windows ROCm/HIP release (llama-b11284-bin-win-rocm-10.0-x64.zip, sha256 8616f4da...). Candidate 'best stock backend' check (PROTOCOL 5.5).",
+  "server": "toolchain/official-b11284-rocm/llama-server.exe",
+  "bench": "toolchain/official-b11284-rocm/llama-bench.exe",
+  "extra_args": []
+}

@@ -1,0 +1,33 @@
+block 0: {'engine': 'diag-host-v3', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 1}
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=   141.4ms tg= 146.64 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   139.5ms tg= 169.92 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=   141.9ms tg= 165.91 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   152.5ms tg= 144.82 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   124.3ms tg= 156.21 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   135.8ms tg= 142.51 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   233.7ms tg= 186.32 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=  1447.6ms tg= 175.89 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   370.9ms tg= 170.07 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   155.5ms tg= 200.42 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=   144.0ms tg= 207.67 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   143.4ms tg= 195.77 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   200.0ms tg= 191.48 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   259.2ms tg= 170.27 t/s
+  [b00_diag-host-v3_qwen35-9b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   289.9ms tg= 195.24 t/s
+block 1: {'engine': 'diag-host-nospec', 'model': 'qwen35-9b', 'workload': 'S-greedy', 'reps': 1}
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-00 n_gen= 256 ttft=   123.4ms tg=  87.93 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-01 n_gen= 256 ttft=   110.4ms tg=  87.95 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-02 n_gen= 256 ttft=   111.5ms tg=  87.91 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-03 n_gen= 256 ttft=   126.5ms tg=  87.65 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-04 n_gen= 256 ttft=   115.3ms tg=  87.78 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-05 n_gen= 256 ttft=   111.3ms tg=  86.70 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-06 n_gen= 256 ttft=   198.2ms tg=  87.00 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-07 n_gen= 256 ttft=   995.3ms tg=  86.09 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-08 n_gen= 256 ttft=   324.5ms tg=  86.88 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-09 n_gen= 256 ttft=   127.0ms tg=  87.17 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-10 n_gen= 256 ttft=   123.6ms tg=  87.12 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-11 n_gen= 256 ttft=   128.5ms tg=  87.06 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-12 n_gen= 256 ttft=   194.3ms tg=  87.24 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-13 n_gen= 256 ttft=   225.5ms tg=  86.92 t/s
+  [b01_diag-host-nospec_qwen35-9b_S-greedy rep0]     dev-prompts-14 n_gen= 256 ttft=   248.6ms tg=  87.00 t/s
+session dir: H:\python-projects\Fast llama\results\raw\20261001-200626_diag-host

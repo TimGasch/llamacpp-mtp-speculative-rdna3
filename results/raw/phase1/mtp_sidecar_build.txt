@@ -1,0 +1,20 @@
+target token_embd.weight                        Q4_K      572129280
+target output_norm.weight                       F32           16384
+target output.weight                            Q6_K      834355200
+mtp    blk.32.attn_k.weight                     Q4_K        2359296
+mtp    blk.32.attn_k_norm.weight                F32            1024
+mtp    blk.32.attn_norm.weight                  F32           16384
+mtp    blk.32.attn_output.weight                Q4_K        9437184
+mtp    blk.32.attn_q.weight                     Q4_K       18874368
+mtp    blk.32.attn_q_norm.weight                F32            1024
+mtp    blk.32.attn_v.weight                     Q6_K        3440640
+mtp    blk.32.ffn_down.weight                   Q6_K       41287680
+mtp    blk.32.ffn_gate.weight                   Q4_K       28311552
+mtp    blk.32.ffn_up.weight                     Q4_K       28311552
+mtp    blk.32.nextn.eh_proj.weight              Q8_0       35651584
+mtp    blk.32.nextn.enorm.weight                F32           16384
+mtp    blk.32.nextn.hnorm.weight                F32           16384
+mtp    blk.32.nextn.shared_head_norm.weight     F32           16384
+mtp    blk.32.post_attention_norm.weight        F32           16384
+total bytes: 1574258688
+e14ead8da7fa0040f05ad137f52e409df6d6a88a4358ff2deb111afcf532b24c *models/Qwen3.5-9B-MTP-sidecar.gguf

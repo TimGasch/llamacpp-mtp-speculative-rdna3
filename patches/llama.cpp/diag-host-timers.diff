@@ -1,0 +1,355 @@
+diff --git a/common/fl_diag.h b/common/fl_diag.h
+new file mode 100644
+index 0000000..db7dcc4
+--- /dev/null
++++ b/common/fl_diag.h
+@@ -0,0 +1,66 @@
++// fastllama diagnostics (diag-host branch only, never part of a candidate build):
++// wall-clock timers around the host-side parts of one speculative step.
++#pragma once
++
++#include "ggml.h"
++
++#include <cinttypes>
++#include <cstdint>
++#include <cstdio>
++
++enum fl_diag_id {
++    FLD_ITER,          // update_slots() iterations that verified a draft
++    FLD_DRAFT_YIELD,   // yield_to_queue around common_speculative_draft
++    FLD_DRAFT_PROC,    // llama_process(ctx_dft) inside draft()
++    FLD_DRAFT_SAMPLE,  // draft sampler (includes the wait for the draft graph)
++    FLD_DRAFT_REST,    // post-draft bookkeeping (checkpoints, batch building)
++    FLD_DEC_YIELD,     // yield_to_queue around the target decode
++    FLD_DEC_PROC,      // llama_process(ctx_tgt) (host: graph build, schedule, record, submit)
++    FLD_DEC_SYNC,      // llama_synchronize(ctx_tgt) (wait for the GPU)
++    FLD_SPEC_YIELD,    // yield_to_queue around common_speculative_process
++    FLD_SPEC_PROC,     // common_speculative_process (MTP hook)
++    FLD_SPEC_PROC_DEC, // llama_process(ctx_dft) inside process()
++    FLD_SMPL_CLONE,    // common_sampler_clone of the slot sampler
++    FLD_SAMPLE,        // common_sampler_sample_and_accept_n
++    FLD_POST,          // accept bookkeeping + sending the tokens
++    FLD_COUNT,
++};
++
++struct fl_diag_slot {
++    const char * name;
++    int64_t t;
++    int64_t n;
++};
++
++inline fl_diag_slot g_fl_diag[FLD_COUNT] = {
++    {"iter", 0, 0},        {"draft_yield", 0, 0}, {"draft_proc", 0, 0},     {"draft_sample", 0, 0},
++    {"draft_rest", 0, 0},  {"dec_yield", 0, 0},   {"dec_proc", 0, 0},       {"dec_sync", 0, 0},
++    {"spec_yield", 0, 0},  {"spec_proc", 0, 0},   {"spec_proc_dec", 0, 0},  {"smpl_clone", 0, 0},
++    {"sample", 0, 0},      {"post", 0, 0},
++};
++
++inline bool g_fl_diag_on = true;
++
++struct fl_timer {
++    int     id;
++    bool    on;
++    int64_t t0;
++    explicit fl_timer(int id_, bool on_ = true) : id(id_), on(on_), t0(ggml_time_us()) {}
++    ~fl_timer() {
++        if (g_fl_diag_on && on) {
++            g_fl_diag[id].t += ggml_time_us() - t0;
++            g_fl_diag[id].n += 1;
++        }
++    }
++};
++
++inline void fl_diag_print_reset() {
++    for (auto & s : g_fl_diag) {
++        if (s.n > 0) {
++            fprintf(stderr, "fl_diag %-14s n=%6" PRId64 " avg=%8.3f ms total=%10.1f ms\n", s.name, s.n, s.t / 1000.0 / s.n, s.t / 1000.0);
++        }
++        s.t = 0;
++        s.n = 0;
++    }
++    fflush(stderr);
++}
+diff --git a/common/speculative.cpp b/common/speculative.cpp
+index 96062e2..d0905ab 100644
+--- a/common/speculative.cpp
++++ b/common/speculative.cpp
+@@ -10,6 +10,7 @@
+ #include "ngram-mod.h"
+ #include "sampling.h"
+ 
++#include "fl_diag.h"
+ #include "../src/llama-ext.h" // staging API: llama_set_embeddings_nextn / llama_get_embeddings_nextn_ith (used by MTP)
+ 
+ #include <algorithm>
+@@ -1625,7 +1626,11 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+                     llama_set_nextn_layer_offset(ctx_dft, head);
+                 }
+ 
+-                const int32_t rc = llama_process(ctx_dft, LLAMA_PROCESS_TYPE_DECODE, batch.get());
++                int32_t rc;
++                {
++                    fl_timer fl_t(FLD_SPEC_PROC_DEC, n_tokens <= 8);
++                    rc = llama_process(ctx_dft, LLAMA_PROCESS_TYPE_DECODE, batch.get());
++                }
+                 if (rc != 0) {
+                     SPC_ERR("llama_process(ctx_dft) head=%d failed rc=%d (pos=%d)\n",
+                             head, (int) rc, (int) batch_in.tokens[0].pos[0]);
+@@ -1712,7 +1717,11 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+                 llama_set_nextn_layer_offset(ctx_dft, i);
+             }
+ 
+-            int ret = llama_process(ctx_dft, LLAMA_PROCESS_TYPE_DECODE, batch.get());
++            int ret;
++            {
++                fl_timer fl_t(FLD_DRAFT_PROC);
++                ret = llama_process(ctx_dft, LLAMA_PROCESS_TYPE_DECODE, batch.get());
++            }
+             if (ret != 0) {
+                 SPC_ERR("llama_process[%d] returned %d\n", i, ret);
+                 break;
+@@ -1730,7 +1739,10 @@ struct common_speculative_impl_draft_mtp : public common_speculative_impl {
+ 
+                 auto * smpl = smpls[seq_id].get();
+ 
+-                common_sampler_sample(smpl, ctx_dft, i_last[seq_id], true);
++                {
++                    fl_timer fl_t(FLD_DRAFT_SAMPLE);
++                    common_sampler_sample(smpl, ctx_dft, i_last[seq_id], true);
++                }
+                 const float * h_row = llama_get_embeddings_nextn_ith(ctx_dft, i_last[seq_id]);
+ 
+                 const auto * cur_p = common_sampler_get_candidates(smpl, true);
+diff --git a/src/llama-context.cpp b/src/llama-context.cpp
+index 87bb3cc..2592c77 100644
+--- a/src/llama-context.cpp
++++ b/src/llama-context.cpp
+@@ -1390,13 +1390,48 @@ bool llama_context::set_adapter_cvec(
+     return res;
+ }
+ 
++// fastllama diagnostics (diag-host branch only): host time of small decode calls, per stage.
++// slot 0 = target context (unmasked nextn), slot 1 = MTP draft context (masked nextn)
++struct fl_ctx_diag_t {
++    int64_t t[8] = {0};
++    int64_t n    = 0;
++    int64_t n_reuse = 0;
++};
++static fl_ctx_diag_t g_fl_ctx[2];
++static thread_local int g_fl_which = -1; // -1 = not timed
++static thread_local int64_t g_fl_t_last = 0;
++static void fl_mark(int stage) {
++    if (g_fl_which < 0) {
++        return;
++    }
++    const int64_t now = ggml_time_us();
++    g_fl_ctx[g_fl_which].t[stage] += now - g_fl_t_last;
++    g_fl_t_last = now;
++}
++static void fl_ctx_report(int which) {
++    auto & d = g_fl_ctx[which];
++    if (++d.n % 400 != 0) {
++        return;
++    }
++    static const char * names[8] = {"init", "apply", "build", "inputs", "compute", "extract", "finish", "-"};
++    fprintf(stderr, "fl_ctx %s n=%" PRId64 " reuse=%" PRId64, which == 0 ? "tgt" : "dft", d.n, d.n_reuse);
++    for (int i = 0; i < 7; ++i) {
++        fprintf(stderr, " %s=%.3f", names[i], d.t[i] / 1000.0 / d.n);
++    }
++    fprintf(stderr, " (ms/call)\n");
++    fflush(stderr);
++    d = fl_ctx_diag_t{};
++}
++
+ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, llm_graph_type gtype, llama_memory_context_i * mctx, ggml_status & ret) {
++    fl_mark(0);
+     if (mctx && !mctx->apply()) {
+         LLAMA_LOG_ERROR("%s: failed to apply memory context\n", __func__);
+         ret = GGML_STATUS_FAILED;
+         return nullptr;
+     }
+ 
++    fl_mark(1);
+     auto * res = get_gf_res_prev();
+     auto * gf  = res->get_gf();
+ 
+@@ -1415,6 +1450,9 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+         }
+ 
+         n_reused++;
++        if (g_fl_which >= 0) {
++            g_fl_ctx[g_fl_which].n_reuse++;
++        }
+     } else {
+         gf_res_prev_active = nullptr;
+         res->reset();
+@@ -1443,6 +1481,7 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+         gf_res_prev_active = res;
+     }
+ 
++    fl_mark(2);
+     // set the input data for the input tensors
+     {
+         //const auto t_start_us = ggml_time_us();
+@@ -1452,8 +1491,10 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+ 
+         //LLAMA_LOG_INFO("graph set inputs time: %.3f ms\n", (ggml_time_us() - t_start_us)/1000.0);
+     }
++    fl_mark(3);
+ 
+     const auto status = graph_compute(res->get_gf(), ubatch.n_tokens > 1);
++    fl_mark(4);
+     if (status != GGML_STATUS_SUCCESS) {
+         LLAMA_LOG_ERROR("%s: failed to compute graph, compute status: %d\n", __func__, status);
+         ret = status;
+@@ -1715,6 +1756,9 @@ int llama_context::decode(const llama_batch_ext & batch_inp) {
+         return -1;
+     }
+ 
++    g_fl_which  = batch_inp.tokens.size() <= 8 ? (cparams.embeddings_nextn_masked ? 1 : 0) : -1;
++    g_fl_t_last = ggml_time_us();
++
+     if (batch_inp.n_embd > 0 && batch_inp.n_embd != batch_inp.n_embd_inp) {
+         LLAMA_LOG_ERROR("%s: embd row width %zu does not match the decoder input %zu\n",
+                 __func__, batch_inp.n_embd, batch_inp.n_embd_inp);
+@@ -2036,6 +2080,7 @@ int llama_context::decode(const llama_batch_ext & batch_inp) {
+ 
+         n_outputs_prev += n_outputs;
+         n_tokens_prev  += ubatch.n_tokens;
++        fl_mark(5);
+     } while (mctx->next());
+ 
+     // set to total number of outputs in the batch, for use in llama_get_logits_ith
+@@ -2091,6 +2136,12 @@ int llama_context::decode(const llama_batch_ext & batch_inp) {
+     // wait for the computation to finish (automatically done when obtaining the model output)
+     //synchronize();
+ 
++    if (g_fl_which >= 0) {
++        fl_mark(6);
++        fl_ctx_report(g_fl_which);
++        g_fl_which = -1;
++    }
++
+     return 0;
+ }
+ 
+diff --git a/tools/server/server-context.cpp b/tools/server/server-context.cpp
+index fbfcbe5..3dd2dbc 100644
+--- a/tools/server/server-context.cpp
++++ b/tools/server/server-context.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "build-info.h"
+ #include "common.h"
++#include "fl_diag.h"
+ #include "fit.h"
+ #include "llama.h"
+ #include "log.h"
+@@ -2750,6 +2751,7 @@ private:
+     int64_t n_decode      = 0;
+     int64_t n_post_decode = 0;
+     int64_t n_sampl       = 0;
++    bool fl_verified      = false;
+ // #define DEBUG_TIMINGS
+ #ifdef DEBUG_TIMINGS
+     struct scoped_timer {
+@@ -2772,6 +2774,26 @@ private:
+ #endif
+ 
+     void update_slots() {
++        struct fl_iter_t {
++            bool & v;
++            int64_t t0;
++            explicit fl_iter_t(bool & v_) : v(v_), t0(ggml_time_us()) { v = false; }
++            ~fl_iter_t() {
++                if (v) {
++                    g_fl_diag[FLD_ITER].t += ggml_time_us() - t0;
++                    g_fl_diag[FLD_ITER].n += 1;
++                }
++            }
++        };
++        {
++            static int64_t fl_prev = 0;
++            const int64_t fl_now = ggml_time_us();
++            if (fl_now - fl_prev > 10 * 1000 * 1000) {
++                fl_prev = fl_now;
++                fl_diag_print_reset();
++            }
++        }
++        fl_iter_t fl_iter(fl_verified);
+ #ifdef DEBUG_TIMINGS
+         static int64_t t_prev = 0;
+         int64_t t_start = ggml_time_us();
+@@ -3021,11 +3043,13 @@ private:
+ 
+         // generate the actual drafts (if any)
+         if (!drafting.empty()) {
++            fl_timer fl_t(FLD_DRAFT_YIELD);
+             queue_tasks.yield_to_queue([&]() {
+                 common_speculative_draft(spec.get());
+             });
+         }
+ 
++        const int64_t fl_rest_t0 = ggml_time_us();
+         // make checkpoints if needed
+         iterate(drafting, [&](server_slot & slot) {
+             auto & draft = slot.spec_draft;
+@@ -3078,6 +3102,10 @@ private:
+         iterate(generating, [&](server_slot & slot) {
+             slot.handle_last_sampled_token(batch);
+         });
++        if (!drafting.empty()) {
++            g_fl_diag[FLD_DRAFT_REST].t += ggml_time_us() - fl_rest_t0;
++            g_fl_diag[FLD_DRAFT_REST].n += 1;
++        }
+ 
+         // process in chunks of params.n_batch
+         int32_t n_batch  = llama_n_batch(ctx_tgt);
+@@ -3659,12 +3687,20 @@ private:
+         // yield to the queue, so we can still handle metrics tasks while decoding
+         // note: the sync is done here too, so that the wait is also covered by the yield
+         int ret = 0;
++        const bool fl_small = batch.view.size() <= 8;
++        {
++        fl_timer fl_t(FLD_DEC_YIELD, fl_small);
+         queue_tasks.yield_to_queue([&]() {
+-            ret = llama_process(ctx_tgt, LLAMA_PROCESS_TYPE_DECODE, batch.view.get());
++            {
++                fl_timer fl_t1(FLD_DEC_PROC, fl_small);
++                ret = llama_process(ctx_tgt, LLAMA_PROCESS_TYPE_DECODE, batch.view.get());
++            }
+             if (ret == 0 && has_output) {
++                fl_timer fl_t2(FLD_DEC_SYNC, fl_small);
+                 llama_synchronize(ctx_tgt);
+             }
+         });
++        }
+ 
+         if (ret != 0) {
+             {
+@@ -3724,7 +3760,9 @@ private:
+         //       ref: https://github.com/ggml-org/llama.cpp/pull/22728#issuecomment-4400925384
+         if (spec) {
+             bool ok = true;
++            fl_timer fl_t(FLD_SPEC_YIELD, fl_small);
+             queue_tasks.yield_to_queue([&]() {
++                fl_timer fl_t1(FLD_SPEC_PROC, fl_small);
+                 ok = common_speculative_process(spec.get(), batch.view);
+             });
+ 
+@@ -3889,10 +3927,15 @@ private:
+ 
+             // verify and try to accept the draft
+             {
++                fl_verified = true;
++                int64_t fl_c0 = ggml_time_us();
+                 common_sampler_ptr smpl_save(common_sampler_clone(slot.smpl.get()));
++                g_fl_diag[FLD_SMPL_CLONE].t += ggml_time_us() - fl_c0;
++                g_fl_diag[FLD_SMPL_CLONE].n += 1;
+ 
+                 GGML_ASSERT(slot.spec_i_batch.size() == n_draft + 1);
+                 const auto & synth_probs = common_speculative_get_synth_probs(spec.get());
++                fl_timer fl_ts(FLD_SAMPLE);
+                 auto accepted = synth_probs.empty()
+                     ? common_sampler_sample_and_accept_n(slot.smpl.get(), slot.ctx_tgt, slot.spec_i_batch, slot.spec_draft)
+                     : server_sample_and_accept_synth(

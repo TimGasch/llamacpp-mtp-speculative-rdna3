@@ -1,0 +1,127 @@
+{
+ "label": "refdeterminism_qwen35-9b",
+ "date": "2026-09-30T20:09:45.636460",
+ "ref": "results/raw/20260930-183829_ref-baseline/b06_ref-vulkan_qwen35-9b_Q2.jsonl",
+ "cand": [
+  "results/raw/20260930-183829_ref-baseline/b00_ref-vulkan_qwen35-9b_S-greedy.jsonl"
+ ],
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "hard_delta_nats": 0.25,
+ "n_items": 15,
+ "n_exact_match": 15,
+ "n_hard": 0,
+ "n_undetermined": 0,
+ "mean_identical_token_share": 1.0,
+ "n_items_cand_nondeterministic": 5,
+ "pass": true,
+ "items": [
+  {
+   "item": "dev-prompts-00",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": false
+  },
+  {
+   "item": "dev-prompts-01",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": false
+  },
+  {
+   "item": "dev-prompts-02",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-03",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": false
+  },
+  {
+   "item": "dev-prompts-04",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-05",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-06",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-07",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": false
+  },
+  {
+   "item": "dev-prompts-08",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": false
+  },
+  {
+   "item": "dev-prompts-09",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-10",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-11",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-12",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-13",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  },
+  {
+   "item": "dev-prompts-14",
+   "diverged": false,
+   "len_ref": 256,
+   "cand_reps": 5,
+   "cand_deterministic": true
+  }
+ ]
+}

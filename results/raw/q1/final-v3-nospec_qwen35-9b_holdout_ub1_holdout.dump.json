@@ -1,0 +1,123 @@
+{
+ "name": "final-v3-nospec_qwen35-9b_holdout_ub1_holdout",
+ "date": "2026-10-01T18:06:55.963673",
+ "cmd": [
+  "H:\\python-projects\\Fast llama\\build\\final3-vulkan\\bin\\qdump.exe",
+  "--segs",
+  "H:\\python-projects\\Fast llama\\eval\\holdout_tokens\\q1_segments_qwen35-9b.txt",
+  "--ub",
+  "1",
+  "--out",
+  "H:\\python-projects\\Fast llama\\results\\q1dumps\\final-v3-nospec_qwen35-9b_holdout_ub1_holdout",
+  "--",
+  "-m",
+  "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+  "-ngl",
+  "99",
+  "-c",
+  "40960",
+  "-np",
+  "1"
+ ],
+ "wall_s": 80.6192569732666,
+ "engine": {
+  "description": "FINAL v3 build without speculation (target-path quality checks via qdump)",
+  "server": "build/final3-vulkan/bin/llama-server.exe",
+  "qdump": "build/final3-vulkan/bin/qdump.exe",
+  "bench": "build/final3-vulkan/bin/llama-bench.exe",
+  "buildinfo": "date: 2026-10-01T18:02:40+02:00\nsrc: /h/python-projects/Fast llama/src/llama.cpp-final3\ncommit: bf51daa49eaaba3ced25eeca055b6dfe87f13fd7\ndescribe: b11284-5-gbf51daa\ndirty-diff-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\ncompiler: clang version 23.1.2 (https://github.com/llvm/llvm-project.git 85ac560262434c9ccfc0c183ec22d4138ed647fb)\ncmake: cmake version 4.4.3\nninja: 1.13.2.git.kitware.jobserver-pipe-1\nglslc: shaderc v2026.2 v2026.2\ncmake-args: -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON -DGGML_NATIVE=ON -DLLAMA_OPENSSL=OFF -DLLAMA_USE_PREBUILT_UI=OFF -DLLAMA_BUILD_TESTS=ON -DCMAKE_C_FLAGS=-D_WIN32_WINNT=0x0A00 -DCMAKE_CXX_FLAGS=-D_WIN32_WINNT=0x0A00\nruntime-dlls: copied from /h/python-projects/Fast llama/toolchain/llvm-mingw-20260922-ucrt-x86_64/x86_64-w64-mingw32/bin\n",
+  "extra_args": [],
+  "model_extra_args": {},
+  "name": "final-v3-nospec",
+  "config_sha256": "93b3ee7dcf4a3ba5d3344d0787ba7bc2fa970dbc052e2418e6798347f32fad85",
+  "server_sha256": "c6b77d427c9da107163260dc6dd9347ad168ce8d710ea5c4f6acbe708362644d",
+  "qdump_sha256": "095f7a90332afa5097d9e01ef4374b4296f7345ef5f1b48cb775009210421f2d",
+  "bench_sha256": "61f3db73680f7bb19ec7c008a2ebb9d2bb0da2ca7b739c25efb1cc4a28c78a9f"
+ },
+ "model": "qwen35-9b",
+ "split": "holdout",
+ "ub": 1,
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "segments_file_sha256": "a2dc761178ea73364788eab32aa257085973eca8714abcd9850d8dfc5c3877cb",
+ "logits_sha256": "d1872e6cb366f06db8abfdccf9d382fde1d54ee048a952205a84b89b0cec1baa",
+ "qdump_meta": {
+  "tool": "qdump",
+  "ub": 1,
+  "n_vocab": 248320,
+  "n_ctx": 40960,
+  "n_batch": 2048,
+  "n_ubatch": 512,
+  "n_scored_total": 5120,
+  "t_scored_ms": 60802.7,
+  "llama_args": [
+   "-m",
+   "H:\\python-projects\\Fast llama\\models\\Qwen3.5-9B-Q4_K_M.gguf",
+   "-ngl",
+   "99",
+   "-c",
+   "40960",
+   "-np",
+   "1"
+  ],
+  "system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+  "segments": [
+   {
+    "id": "holdout-long-03",
+    "n_tokens": 16385,
+    "n_prefix": 15360,
+    "n_scored": 1024
+   },
+   {
+    "id": "holdout-corpus-00",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-01",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-02",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-03",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-04",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-05",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-06",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   },
+   {
+    "id": "holdout-corpus-07",
+    "n_tokens": 514,
+    "n_prefix": 1,
+    "n_scored": 512
+   }
+  ]
+ }
+}

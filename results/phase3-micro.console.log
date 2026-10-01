@@ -1,0 +1,20 @@
+ pp512 @ d0        1438.14 ± 13.79 t/s  backend=Vulkan
+ tg128 @ d0          89.75 ± 0.08 t/s  backend=Vulkan
+ pp512 @ d4096     1343.67 ± 6.34 t/s  backend=Vulkan
+ tg128 @ d4096       86.86 ± 0.07 t/s  backend=Vulkan
+raw: /h/python-projects/Fast llama/results/raw/20261001-013721_micro_ref-vulkan_qwen35-9b
+ pp512 @ d0        3000.43 ± 25.38 t/s  backend=Vulkan
+ tg128 @ d0          82.93 ± 0.08 t/s  backend=Vulkan
+ pp512 @ d4096     1197.07 ± 3.88 t/s  backend=Vulkan
+ tg128 @ d4096       75.78 ± 0.21 t/s  backend=Vulkan
+raw: /h/python-projects/Fast llama/results/raw/20261001-013832_micro_ref-vulkan_gemma4-e4b
+ pp512 @ d0        1431.66 ± 9.76 t/s  backend=Vulkan
+ tg128 @ d0          89.67 ± 0.07 t/s  backend=Vulkan
+ pp512 @ d4096     1335.77 ± 14.21 t/s  backend=Vulkan
+ tg128 @ d4096       86.71 ± 0.07 t/s  backend=Vulkan
+raw: /h/python-projects/Fast llama/results/raw/20261001-014050_micro_final_qwen35-9b
+ pp512 @ d0        3010.43 ± 22.89 t/s  backend=Vulkan
+ tg128 @ d0          82.94 ± 0.07 t/s  backend=Vulkan
+ pp512 @ d4096     1194.47 ± 2.18 t/s  backend=Vulkan
+ tg128 @ d4096       75.89 ± 0.21 t/s  backend=Vulkan
+raw: /h/python-projects/Fast llama/results/raw/20261001-014204_micro_final_gemma4-e4b

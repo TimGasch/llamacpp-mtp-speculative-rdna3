@@ -1,0 +1,14 @@
+dump ref-vulkan_qwen35-9b_holdout_ub1_holdout: 5120 positions, 87.0s, sha=d1872e6cb366f06d
+dump ref-vulkan_qwen35-9b_holdout_ub512_holdout: 5120 positions, 45.4s, sha=87a328b5743a27b6
+dump ref-vulkan_qwen35-9b_holdout_ub4_holdout: 5120 positions, 42.1s, sha=e3917e1942990952
+dump ref-vulkan_qwen35-9b_holdout_ub1_holdout-fa-off: 5120 positions, 80.9s, sha=033a24214c17cbbd
+dump final-nospec_qwen35-9b_holdout_ub1_holdout: 5120 positions, 82.5s, sha=d1872e6cb366f06d
+dump final-nospec_qwen35-9b_holdout_ub4_holdout: 5120 positions, 43.8s, sha=e3917e1942990952
+dump final-nospec_qwen35-9b_holdout_ub512_holdout: 5120 positions, 42.6s, sha=87a328b5743a27b6
+dump ref-vulkan_gemma4-e4b_holdout_ub1_holdout: 5120 positions, 151.9s, sha=5144bf1f1be9a6d2
+dump ref-vulkan_gemma4-e4b_holdout_ub512_holdout: 5120 positions, 51.5s, sha=0ad7ab7436c8f043
+dump ref-vulkan_gemma4-e4b_holdout_ub4_holdout: 5120 positions, 52.0s, sha=25d9339f97f3e9c9
+dump ref-vulkan_gemma4-e4b_holdout_ub1_holdout-fa-off: 5120 positions, 91.9s, sha=aae9fa0bdc1c1f88
+dump final-nospec_gemma4-e4b_holdout_ub1_holdout: 5120 positions, 95.3s, sha=5144bf1f1be9a6d2
+dump final-nospec_gemma4-e4b_holdout_ub4_holdout: 5120 positions, 52.1s, sha=25d9339f97f3e9c9
+dump final-nospec_gemma4-e4b_holdout_ub512_holdout: 5120 positions, 70.1s, sha=0ad7ab7436c8f043

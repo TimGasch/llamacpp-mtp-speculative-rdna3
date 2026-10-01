@@ -1,0 +1,71 @@
+{
+ "label": "gate_holdout_qwen35-9b_final",
+ "date": "2026-10-01T00:44:38.036188",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "holdout_envelope_qwen35-9b_ub512_holdout",
+  "holdout_envelope_qwen35-9b_ub4_holdout",
+  "holdout_envelope_qwen35-9b_ub1_holdout-fa-off"
+ ],
+ "envelope": {
+  "mean_kld": 0.0005136588469833666,
+  "p99_kld": 0.004044716006231212,
+  "top1_agree": 0.9892578125,
+  "abs_ln_ppl_ratio": 0.0008448549277188036
+ },
+ "candidates": [
+  {
+   "cand": "holdout_final_qwen35-9b_ub1",
+   "summary": {
+    "mean_kld": 0.0,
+    "p99_kld": 0.0,
+    "top1_agree": 1.0,
+    "abs_ln_ppl_ratio": 0.0
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "holdout_final_qwen35-9b_ub4",
+   "summary": {
+    "mean_kld": 0.00036892467551955085,
+    "p99_kld": 0.0032734009535103706,
+    "top1_agree": 0.990625,
+    "abs_ln_ppl_ratio": 0.00031457928811984417
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "holdout_final_qwen35-9b_ub512",
+   "summary": {
+    "mean_kld": 0.0005136588469833666,
+    "p99_kld": 0.004044716006231212,
+    "top1_agree": 0.9892578125,
+    "abs_ln_ppl_ratio": 0.00042472775534317555
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  }
+ ],
+ "pass": true
+}

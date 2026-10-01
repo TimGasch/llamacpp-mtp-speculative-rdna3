@@ -1,0 +1,147 @@
+{
+ "label": "noisefloor_qwen35-9b_ub512_frozen_vs_ub1",
+ "date": "2026-09-30T19:30:51.140082",
+ "ref": "ref-vulkan_qwen35-9b_dev_ub1_frozen",
+ "cand": "ref-vulkan_qwen35-9b_dev_ub512_frozen",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "430b907b4557f813992943d5c6163c0c779d7e3e5b74926c6560302b4576994b"
+ },
+ "ref_logits_sha256": "55017757ad742e325aec830acc924b9416f24d8cc64f57d40e54c6cf2c1672e5",
+ "cand_logits_sha256": "b9b879df78f6433ff04a2942d1d324e33ada9591ce3b2c08ddd95f64600f316e",
+ "gates": {
+  "mean_kld_max": 0.0005,
+  "p99_kld_max": 0.005,
+  "top1_agree_min": 0.995,
+  "abs_ln_ppl_ratio_max": 0.001
+ },
+ "summary": {
+  "n": 5120,
+  "mean_kld": 0.0022400295886832377,
+  "p99_kld": 0.04140749984230864,
+  "max_kld": 0.2736257890834905,
+  "top1_agree": 0.985546875,
+  "ppl_ref": 5.668509786470196,
+  "ppl_cand": 5.6735346028568525,
+  "abs_ln_ppl_ratio": 0.0008860513224807862,
+  "bit_identical_rows": 0,
+  "max_abs_logit_diff": 5.737521409988403
+ },
+ "verdict": {
+  "mean_kld": false,
+  "p99_kld": false,
+  "top1_agree": false,
+  "ppl_ratio": true
+ },
+ "pass": false,
+ "per_segment": {
+  "dev-long-03": {
+   "n": 1024,
+   "mean_kld": 0.008626942272795993,
+   "p99_kld": 0.08948580890378358,
+   "max_kld": 0.15065217908805723,
+   "top1_agree": 0.970703125,
+   "ppl_ref": 2.4334696183492466,
+   "ppl_cand": 2.432530389726092,
+   "abs_ln_ppl_ratio": 0.0003860372516480656,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 2.4902913570404053
+  },
+  "dev-corpus-00": {
+   "n": 512,
+   "mean_kld": 0.00045128431003238175,
+   "p99_kld": 0.0035096821448114836,
+   "max_kld": 0.028164173322451108,
+   "top1_agree": 0.990234375,
+   "ppl_ref": 7.742091367659104,
+   "ppl_cand": 7.739240398483634,
+   "abs_ln_ppl_ratio": 0.000368310588619215,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 3.4814983010292053
+  },
+  "dev-corpus-01": {
+   "n": 512,
+   "mean_kld": 0.0004261918794891712,
+   "p99_kld": 0.0028836173711163783,
+   "max_kld": 0.004759160395724736,
+   "top1_agree": 0.9921875,
+   "ppl_ref": 7.072682195837776,
+   "ppl_cand": 7.068395119175589,
+   "abs_ln_ppl_ratio": 0.0006063295883370009,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 3.872668147087097
+  },
+  "dev-corpus-02": {
+   "n": 512,
+   "mean_kld": 0.0004178166581083194,
+   "p99_kld": 0.0026270197635240512,
+   "max_kld": 0.00838775448834663,
+   "top1_agree": 0.9921875,
+   "ppl_ref": 5.812723653461607,
+   "ppl_cand": 5.830055518527731,
+   "abs_ln_ppl_ratio": 0.002977275032499444,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.226271629333496
+  },
+  "dev-corpus-03": {
+   "n": 512,
+   "mean_kld": 0.00034092209274485695,
+   "p99_kld": 0.002594540529104689,
+   "max_kld": 0.004801017324108768,
+   "top1_agree": 0.990234375,
+   "ppl_ref": 2.273867887502895,
+   "ppl_cand": 2.2723514076274065,
+   "abs_ln_ppl_ratio": 0.0006671389272216104,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 5.737521409988403
+  },
+  "dev-corpus-04": {
+   "n": 512,
+   "mean_kld": 0.0008476379024496706,
+   "p99_kld": 0.005337003744497179,
+   "max_kld": 0.1839253263735597,
+   "top1_agree": 0.990234375,
+   "ppl_ref": 2.928526069063564,
+   "ppl_cand": 2.9438735726139704,
+   "abs_ln_ppl_ratio": 0.00522700750291987,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 2.328605890274048
+  },
+  "dev-corpus-05": {
+   "n": 512,
+   "mean_kld": 0.0007620226894260485,
+   "p99_kld": 0.008658267065809659,
+   "max_kld": 0.05002053224959217,
+   "top1_agree": 0.98046875,
+   "ppl_ref": 21.12707311621751,
+   "ppl_cand": 21.09864772149037,
+   "abs_ln_ppl_ratio": 0.0013463547078433292,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.2695198059082031
+  },
+  "dev-corpus-06": {
+   "n": 512,
+   "mean_kld": 0.0010085880008307495,
+   "p99_kld": 0.003779736205707023,
+   "max_kld": 0.2736257890834905,
+   "top1_agree": 0.99609375,
+   "ppl_ref": 10.256183916900538,
+   "ppl_cand": 10.280963746420962,
+   "abs_ln_ppl_ratio": 0.00241317265200586,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 3.8454777002334595
+  },
+  "dev-corpus-07": {
+   "n": 512,
+   "mean_kld": 0.0008919478081592,
+   "p99_kld": 0.010678158395310505,
+   "max_kld": 0.03608003958150329,
+   "top1_agree": 0.982421875,
+   "ppl_ref": 12.59434482568886,
+   "ppl_cand": 12.619599940827765,
+   "abs_ln_ppl_ratio": 0.002003266352699768,
+   "bit_identical_rows": 0,
+   "max_abs_logit_diff": 1.9986835718154907
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+  "description": "iteration 4 build (commit 991c2e6; built from 2bdfca4+diff sha cf2ebb23) + draft-mtp n=4; Qwen sidecar Qwen3.5-9B-MTP-sidecar-rv64k.gguf; Gemma official drafter",
+  "server": "build/it04/bin/llama-server.exe",
+  "qdump": "build/it04/bin/qdump.exe",
+  "bench": "build/it04/bin/llama-bench.exe",
+  "buildinfo": "build/it04/BUILDINFO.txt",
+  "extra_args": [],
+  "model_extra_args": {
+    "qwen35-9b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/Qwen3.5-9B-MTP-sidecar-rv64k.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "4"
+    ],
+    "gemma4-e4b": [
+      "-md",
+      "H:/python-projects/Fast llama/models/mtp-gemma-4-E4B-it.gguf",
+      "--spec-type",
+      "draft-mtp",
+      "--spec-draft-n-max",
+      "4"
+    ]
+  }
+}

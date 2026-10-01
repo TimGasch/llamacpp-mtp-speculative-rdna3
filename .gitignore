@@ -1,0 +1,15 @@
+# not part of the repository: model weights, build trees, toolchains, upstream sources
+models/*.gguf
+build/
+toolchain/
+src/
+.venv/
+__pycache__/
+*.pyc
+# multi-GB logit dumps (hashes are in results/q1dumps/*.json)
+results/**/*.logits
+results/**/*.bin
+results/**/*.npy
+# raw evaluation downloads (re-fetch with scripts/fetch_eval_data.sh; hashes in eval/raw/SOURCES.tsv)
+eval/raw/*
+!eval/raw/SOURCES.tsv

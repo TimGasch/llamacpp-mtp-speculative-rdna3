@@ -1,0 +1,55 @@
+{
+ "label": "gate_dev_qwen35-9b_it04-verify",
+ "date": "2026-09-30T21:52:27.512117",
+ "tooling": {
+  "frozen": true,
+  "manifest_sha256": "65baadf4d76cf0115bbd8d1ff97f95d2fe0ef372d034709118631e0048f842da"
+ },
+ "rule": "PROTOCOL Amendment 1 (A1.1)",
+ "envelope_sources": [
+  "noisefloor_qwen35-9b_ub512_frozen_vs_ub1",
+  "noisefloor_qwen35-9b_ub4_frozen_vs_ub1",
+  "noisefloor_qwen35-9b_ub1_fa-off_vs_ub1"
+ ],
+ "envelope": {
+  "mean_kld": 0.0022400295886832377,
+  "p99_kld": 0.04140749984230864,
+  "top1_agree": 0.984375,
+  "abs_ln_ppl_ratio": 0.0008860513224807862
+ },
+ "candidates": [
+  {
+   "cand": "it04_qwen35-9b_ub4_vs_ub1",
+   "summary": {
+    "mean_kld": 0.0021787217874758213,
+    "p99_kld": 0.035313930508016886,
+    "top1_agree": 0.9861328125,
+    "abs_ln_ppl_ratio": 0.00025085014843961016
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  },
+  {
+   "cand": "it04_qwen35-9b_ub5_vs_ub1",
+   "summary": {
+    "mean_kld": 0.001554584510170842,
+    "p99_kld": 0.03044343752352299,
+    "top1_agree": 0.9873046875,
+    "abs_ln_ppl_ratio": 0.0005614411561779856
+   },
+   "verdict": {
+    "mean_kld": true,
+    "p99_kld": true,
+    "top1_agree": true,
+    "abs_ln_ppl_ratio": true
+   },
+   "pass": true
+  }
+ ],
+ "pass": true
+}
